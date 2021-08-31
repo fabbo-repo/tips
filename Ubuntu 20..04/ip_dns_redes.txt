@@ -1,0 +1,19 @@
+Ver dirección IP
+-> hostname -I
+o
+-> sudo apt install net-tools
+-> ifconfig
+o
+-> ip ad
+
+------------------------------------------------------------------------------------
+Ver puerta de enlace
+-> ip route
+
+------------------------------------------------------------------------------------
+Ver dns:
+-> systemd-resolve --status
+
+------------------------------------------------------------------------------------
+Revisar puertos abiertos:
+-> ss -lnt

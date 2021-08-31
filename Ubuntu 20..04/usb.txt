@@ -1,0 +1,3 @@
+Ver dispositivos USB conectados:
+-> lsusb
+

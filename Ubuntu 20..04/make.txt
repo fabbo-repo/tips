@@ -1,0 +1,4 @@
+No funciona correctamente el comando make
+-> sudo apt install make
+-> sudo apt install flex
+-> sudo apt install bison

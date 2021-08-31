@@ -1,0 +1,16 @@
+Editar fichero sudo:
+-> sudo visudo
+
+------------------------------------------------------------------------------------
+Añadir permisos root a un usuario:
+- Editar fichero sudo
+-> sudo visudo
+- Añadir debajo de root la siguiente linea
+-> nombreUsuario ALL=ALL
+
+------------------------------------------------------------------------------------
+Añadir permisos root a un grupo:
+- Editar fichero sudo
+-> sudo visudo
+- Añadir debajo de %root la siguiente linea
+-> %nombreGrupo ALL = NOPASSWD:ALL

@@ -1,0 +1,28 @@
+- Ver nombres de los monitores conectados:
+-> xrandr
+
+- Ver modeline de la resolución (ejemplo: 1600x900 con 60 Hz):
+-> cvt 1600 900 60
+
+- Copiar la línea mostrada, por ejemplo:
+-> Modeline "1600x900 60.00" 118.25 1600 1696 1856 2112 900 903 908 934 -hsync +vsync
+
+- Crear directorio X11:
+-> sudo mkdir /etc/X11/xorg.conf.d
+
+- Crear y editar fichero de configuración:
+-> sudo vim /etc/X11/xorg.conf.d/10-monitor.conf
+
+- Añadir configuración nueva con monitor de nombre "HDMI-0" (escribir a mano para evitar problemas):
+Section "Monitor"
+	Identifier "HDMI-0"
+	Modeline "1600x900 60.00" 118.25 1600 1696 1856 2112 900 903 908 934 -hsync +vsync
+	Option "PreferredMode" "1600x900_60.00"
+EndSection
+
+- Editar configuración adicional:
+-> sudo vim /etc/gdm3/custom.conf
+
+- Descomentar "WaylandEnable=false"-
+
+ 

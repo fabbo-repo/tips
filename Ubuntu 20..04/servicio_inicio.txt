@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------------
+Ejecutar script al iniciar equipo:
+- Dar permisos de ejecución:
+-> sudo chmod +x script.sh
+- Copiarlo a /usr/local/bin
+-> sudo cp script.sh /usr/local/bin
+Crear fichero .service:
+        [Unit]
+        After=NetworkManager.service
+
+        [Service]
+        Type=oneshot
+        ExecStart=/usr/local/bin/reiniciar-red.sh
+
+        [Install]
+        WantedBy=multi-user.target
+- Copiarlo a /etc/systemd/system
+-> sudo cp script.service /etc/systemd/system
+Activar el servicio
+-> sudo systemctl enable script
+

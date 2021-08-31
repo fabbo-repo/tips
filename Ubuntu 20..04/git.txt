@@ -1,0 +1,26 @@
+Instalar git:
+-> sudo apt install git
+
+------------------------------------------------------------------------------------
+Instalar github Desktop:
+- Desgargar clave del reoisitorio
+-> wget -qO - https://packagecloud.io/shiftkey/desktop/gpgkey | sudo apt-key add -
+- Añadir repositorio
+-> sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any/ any main" > /etc/apt/sources.list.d/packagecloud-shiftky-desktop.list'
+- Actualizar repositorios
+-> sudo apt update
+- Instalar la aplicación
+-> sudo apt install github-desktop
+
+------------------------------------------------------------------------------------
+Extensión de git para VSCode:
+- Git Graph
+
+------------------------------------------------------------------------------------
+Opciones de git:
+- Iniciar git en el proyecto actual
+-> git init
+- Clonar repositorio al directorio actual
+-> git remote add origin https://github.com/FabboBox/VSTestRepo.git
+- Crear una rama
+-> git branch -M main

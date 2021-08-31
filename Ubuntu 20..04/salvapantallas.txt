@@ -1,0 +1,5 @@
+Añadir salvapantallas:
+-> sudo apt install xscreensaver-data-extra xscreensaver-gl-extra 
+-> cd /usr/share/applications/screensavers
+-> sudo su
+-> find . -name '*.desktop' | xargs sed -i 's/OnlyShowIn=GNOME;/OnlyShowIn=GNOME;MATE;/'

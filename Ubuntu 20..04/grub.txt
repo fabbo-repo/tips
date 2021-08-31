@@ -1,0 +1,17 @@
+Cambiar imagen fondo grub GRUB:
+- Copiar imagen de fondo 
+-> sudo cp imagen.png /boot/grub/
+- Actualizar el grub
+-> sudo update-grub
+
+------------------------------------------------------------------------------------
+Modificar GRUB:
+1- Instalar GRUB CUSTOMIZER
+-> sudo apt install grub-customizer  (primero sudo apt update)
+2- Descargar un tema de www.gnome-look.org
+3- Crear carpeta de temas
+-> sudo mkdir /boot/grub/themes/
+4- Copiar el tema
+-> sudo cp ./Descargas/TemaDescargado/...  /boot/grub/themes/
+5- Abrir GRUB CUSTOMIZER y cambiar el tema por defecto
+

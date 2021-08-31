@@ -1,0 +1,5 @@
+Solucionar mensaje "Authentication is required to update SMART data from ..."
+- Ir al thermometro -> Ajustes -> Providers
+- Desmarcar "Enable support of udisks2"
+
+------------------------------------------------------------------------------------

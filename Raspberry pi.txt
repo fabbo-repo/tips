@@ -1,0 +1,5 @@
+- Hacer que boton de encendido/apagado funcione:
+https://soloelectronicos.com/2018/10/18/como-agregar-un-boton-de-encendido-apagado-a-la-raspberry-pi/
+
+- Ventilador variable con respecto a la temperatura:
+https://descubriendolaorangepi.wordpress.com/2017/06/20/gpio-en-c-control-automatico-de-ventilador-segun-la-temperatura/

@@ -1,0 +1,41 @@
+Ver particiones:
+-> sudo lsblk -fm
+
+------------------------------------------------------------------------------------
+Montar particiones ntfs: (sdxx es la paricion a montar)
+-> sudo mount -t ntfs /dev/sdxx carpetaDondeMontarla
+
+------------------------------------------------------------------------------------
+No se puede escribir en una particion en ntfs
+Solucion 1:
+-> sudo apt install ntfs-3g
+Solucion2:  (sdxx es la particion a montar)
+-> sudo ntfsfix /dev/sdxx
+
+------------------------------------------------------------------------------------
+Comandos para particiones:
+Ver UID particiones:
+-> sudo blkid
+Ver particiones:
+-> sudo lsblk -fm
+
+------------------------------------------------------------------------------------
+Problemas para acceder a particiones compartidas con Windows - Linux
+- Ir al Panel de Control en Windows 10
+- Ir a:
+-> hardware y sonido -> opciones de energía
+- Elegir el comportamiento de los botones de inicio/apagado
+- Desmarcar Activar inicio rápido
+
+------------------------------------------------------------------------------------
+Montar particiones automaticamente al iniciar
+- Buscar la partición:
+-> sudo lsblk -fm
+- Buscar UUID de la particion:  (sdxx es la paricion a montar)
+-> sudo blkid /dev/sdxx
+- Crear carpeta de montaje:
+-> sudo mkdir /media/carpeta_montaje
+- Ir a fstab:
+-> sudo nano /etc/fstab
+- Agregar siguiente linea al final:   (formato para ntfs: ntfs-3g, fat: vfat, ext4: ext4)
+UUID=XXXXXXXXXXXX      /media/carpeta_montaje       formato default 0 0

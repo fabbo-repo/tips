@@ -1,0 +1,3 @@
+Averiguar las direcciones ip de los sitios webs
+-> "nslookup"
+- Escribir luego el nombre de la web que buscas
