@@ -31,6 +31,12 @@ Opciones de git:
 -> git commit -m "desc"
 	Nota: "desc" hace referencia a la descripción del commit
 
+- Ejecutar add y commit a la vez
+-> git commit -am "desc"
+
+- Editar descripción de un commit
+-> git commit --amend
+
 - Ver listado de commits en el repositorio local
 -> git log --oneline
 
@@ -45,7 +51,7 @@ Opciones de git:
 -> git config --global user.username "Nombre" user.mail "ejemplo@gmal.com"
 	Nota: "Nombre" se refiere al nombre de usuario y "ejemplo@gmal.com" al correo
 
-- Clonar repositorio al directorio actual
+- Añadir lo que se encuentra en el repositorio local a github
 -> git remote add origin https://github.com/FabboBox/VSTestRepo.git
 
 - Crear una rama
