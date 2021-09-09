@@ -23,7 +23,7 @@ Opciones de git:
 - Editar descripción de un commit
 -> git commit --amend
 
-- Ver listado de commits en el repositorio local
+- Ver listado de commits y tags en el repositorio local
 -> git log --oneline
 
 - Regresar a un commit previo
@@ -42,3 +42,15 @@ Opciones de git:
 
 - Crear una rama
 -> git branch -M main
+
+- Crear una tag
+-> git tag nombre -m "desc"
+	Nota: nombre hace referencia al nombre de la tag
+	      "desc" hace referencia a la descripción del commit
+
+- Subir tag
+-> git push --tags
+
+- Clonar repositorio a local
+-> git clone url
+	Nota: url se refiere al enlace del repositorio ubicado en remoto
