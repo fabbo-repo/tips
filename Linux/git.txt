@@ -40,8 +40,21 @@ Opciones de git:
 - Añadir lo que se encuentra en el repositorio local a github
 -> git remote add origin https://github.com/FabboBox/VSTestRepo.git
 
-- Crear una rama
--> git branch -M main
+- Crear una rama main
+-> git branch -M nombre
+	Nota: nombre hace referencia al nombre de la rama
+
+- Crear rama adicional
+-> git branch nombre 
+
+- Listar ramas
+-> git branch 
+
+- Cambiar de rama
+-> git checkout nombre
+
+- Hacer merge de una rama a la que estás ubicado actualmnte
+-> git merge nombre
 
 - Crear una tag
 -> git tag nombre -m "desc"
@@ -54,3 +67,4 @@ Opciones de git:
 - Clonar repositorio a local
 -> git clone url
 	Nota: url se refiere al enlace del repositorio ubicado en remoto
+	
