@@ -1,5 +1,5 @@
 ### Exportar dependencias de un proyecto:
-* Ubicarce en el directorio padre/raiz del proyecto
+* Ubicarse en el directorio padre/raiz del proyecto
 * Ejecutar el comando:
     pip freeze > requirements.txt
 
