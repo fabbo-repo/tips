@@ -9,13 +9,11 @@
   ~~~
 > Nota: Crea la carpeta .git
 
-
 * Hacer monitorización y seguimiento de solo un fichero o directorio		(área de ensayo)
   ~~~
   git add path
   ~~~
 > Nota: path se refiere a la ruta del fichero o directorio
-
 
 * Trasladar los archivos/ficheros del área de ensayo al repositorio local con descripción
   ~~~
