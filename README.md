@@ -1,1 +1,1 @@
-# SOTips
+# Tips
