@@ -1,17 +1,21 @@
 ------------------------------------------------------------------------------------
-Transparencia de fondo y desenfoque:
-- Editar la configuración:
--> sudo nano /.config/yakuakerc
-- Añadir:
-	[Appearance]
-	Blur=true
-	Translucency=true
-- Reiniciar yakuake:
--> sudo systemctl restart yakuake
+### Transparencia de fondo y desenfoque:
+* Editar la configuración:
+~~~
+sudo nano /.config/yakuakerc
+~~~
+* Añadir:
+> [Appearance]
+> Blur=true
+> Translucency=true
+* Reiniciar yakuake:
+~~~
+sudo systemctl restart yakuake
+~~~
 
 ------------------------------------------------------------------------------------
-Script para programar yakuake:
-
+### Script de ejemplo para programar yakuake:
+~~~
 #!/bin/bash
 # Starting Yakuake based on user preferences. Information based on https://forums.gentoo.org/viewtopic-t-873915-start-0.html
 # Adding sessions from previous website is broken, use this: http://pawelkoston.pl/blog/sublime-text-3-cheatsheet-modules-web-develpment/
@@ -49,3 +53,4 @@ qdbus org.kde.yakuake /yakuake/tabs setTabTitle 3 "work server"
 qdbus org.kde.yakuake /yakuake/sessions runCommandInTerminal 5 "ssh work"
 qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.splitTerminalLeftRight "$TERMINAL_ID_2"
 qdbus org.kde.yakuake /yakuake/sessions runCommandInTerminal 6 "ssh work"
+~~~
