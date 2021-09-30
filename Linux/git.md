@@ -7,19 +7,19 @@
   ~~~
   git init
   ~~~
-> Nota: Crea la carpeta .git
+> Nota: Crea la carpeta ***.git***
 
 * Hacer monitorización y seguimiento de solo un fichero o directorio		(área de ensayo)
   ~~~
   git add path
   ~~~
-> Nota: path se refiere a la ruta del fichero o directorio
+> Nota: ***path*** se refiere a la ruta del fichero o directorio
 
 * Trasladar los archivos/ficheros del área de ensayo al repositorio local con descripción
   ~~~
   git commit -m "desc"
   ~~~
-> Nota: "desc" hace referencia a la descripción del commit
+> Nota: ***"desc"*** hace referencia a la descripción del commit
 
 * Ejecutar add y commit a la vez
   ~~~
@@ -40,8 +40,11 @@
   ~~~
   git reset --hard id
   ~~~
-> Nota: siendo id el identificador del commit, se puede ver con "git log --oneline"
-
+> Nota: siendo ***id*** el identificador del commit, se puede ver con:
+  ~~~
+  git log --oneline
+  ~~~
+  
 * Ver archivos y directorios que no están en el repositorio en la carpeta del proyectos, y si están cometidos a seguimiento por git
   ~~~
   git status -s
@@ -51,7 +54,7 @@
   ~~~
   git config --global user.username "Nombre" user.mail "ejemplo@gmal.com"
   ~~~
-> Nota: "Nombre" se refiere al nombre de usuario y "ejemplo@gmal.com" al correo
+> Nota: ***Nombre*** se refiere al nombre de usuario y ***ejemplo@gmal.com*** al correo
 
 * Añadir lo que se encuentra en el repositorio local a github
   ~~~
@@ -62,7 +65,7 @@
   ~~~
   git branch -M nombre
   ~~~
-> Nota: nombre hace referencia al nombre de la rama
+> Nota: ***nombre*** hace referencia al nombre de la rama
 
 * Crear rama adicional
   ~~~
@@ -88,7 +91,7 @@
   ~~~
   git tag nombre -m "desc"
   ~~~
-> Nota: nombre hace referencia al nombre de la tag y "desc" hace referencia a la descripción del commit
+> Nota: ***nombre*** hace referencia al nombre de la tag y ***"desc"*** hace referencia a la descripción del commit
 
 * Subir tag
   ~~~
@@ -99,4 +102,4 @@
   ~~~
   git clone url
   ~~~
-> Nota: url se refiere al enlace del repositorio ubicado en remoto
+> Nota: ***url*** se refiere al enlace del repositorio ubicado en remoto
