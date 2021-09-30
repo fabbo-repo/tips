@@ -4,7 +4,8 @@
 ### Opciones de git:
 
 * Iniciar monitorización y seguimiento de ficheros en el proyecto actual	(área de ensayo)
-  ~~~git init~~~
+  ~~~
+  git init~~~
 > Nota: Crea la carpeta .git
 
 * Hacer monitorización y seguimiento de solo un fichero o directorio		(área de ensayo)
