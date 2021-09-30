@@ -1,4 +1,3 @@
-------------------------------------------------------------------------------------
 ### Transparencia de fondo y desenfoque:
 * Editar la configuración:
 ~~~
