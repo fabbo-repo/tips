@@ -13,7 +13,7 @@
   ~~~
   git add path
   ~~~
->> Nota: path se refiere a la ruta del fichero o directorio
+> Nota: path se refiere a la ruta del fichero o directorio
 
 * Trasladar los archivos/ficheros del área de ensayo al repositorio local con descripción
   ~~~
@@ -21,22 +21,22 @@
   ~~~
 > Nota: "desc" hace referencia a la descripción del commit
 
-### Ejecutar add y commit a la vez
+* Ejecutar add y commit a la vez
   ~~~
   git commit -am "desc"
   ~~~
 
-### Editar descripción de un commit
+* Editar descripción de un commit
   ~~~
   git commit --amend
   ~~~
 
-### Ver listado de commits y tags en el repositorio local
+* Ver listado de commits y tags en el repositorio local
   ~~~
   git log --oneline
   ~~~
 
-### Regresar a un commit previo
+* Regresar a un commit previo
   ~~~
   git reset --hard id
   ~~~
