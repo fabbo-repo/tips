@@ -54,7 +54,7 @@
   ~~~
   git config --global user.username "Nombre" user.mail "ejemplo@gmal.com"
   ~~~
-> Nota: ***Nombre*** se refiere al nombre de usuario y ***ejemplo@gmal.com*** al correo
+> Nota: ***Nombre*** se refiere al nombre de usuario y ***ejemplo@gmail.com*** al correo
 
 * Añadir lo que se encuentra en el repositorio local a github
   ~~~
