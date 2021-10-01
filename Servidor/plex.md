@@ -56,6 +56,8 @@ sudo ufw status verbose
 
 ------------------------------------------------------------------------------------
 ### Problemas al acceder a disco usb desde PLEX MEDIA SERVER:
+
+* Dar permisos al directorio donde se encuentra montado el disco
 ~~~
 sudo chmod -R 777 /media/tuusuario/
 ~~~
