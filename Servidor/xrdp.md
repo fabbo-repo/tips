@@ -29,6 +29,7 @@ sudo nano /etc/xrdp/xrdp.ini
 * Añadir variable debajo de max_bpp
 > use_compression=yes
 
+---------------------------------------------------
 ### Personalizar la interfaz
 * Ir a la carpeta que utiliza xdrp para las imagenes y logos:
 ~~~
@@ -52,31 +53,37 @@ sudo nano /etc/xrdp/xrdp.ini
 * Modificar ls_logo_filename
 > ls_logo_filename=/usr/share/xrdp/imagenLogo.bmp
 
+---------------------------------------------------
 ### Reiniciar servicio xrdp:
 ~~~
 sudo systemctl restart xrdp
 ~~~
 
+---------------------------------------------------
 ### Revisar estado:
 ~~~
 sudo systemctl status xrdp
 ~~~
 
+---------------------------------------------------
 ### Cerrar sesión xrdp:
 ~~~
 /etc/init.d/xrdp stop
 ~~~
 
+---------------------------------------------------
 ### Usar xrdp:
 ~~~
 /etc/init.d/xrdp start
 ~~~
 
+---------------------------------------------------
 ### Verificar estado:
 ~~~
 /etc/init.d/xrdp status
 ~~~
 
+---------------------------------------------------
 ### Si está el firewall activo:
 ~~~
 sudo ufw allow 3389/tcp
