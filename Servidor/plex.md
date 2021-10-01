@@ -21,6 +21,7 @@ sudo apt install plexmediaserver
 sudo systemctl status plexmediaserver
 ~~~
 
+------------------------------------------------------------------------------------
 ### En caso de que el firewall esté activado:
 * Crear perfil de aplicación para Plex en UFW 
 ~~~
