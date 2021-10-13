@@ -1,7 +1,7 @@
 ### Ejemplos de código
 
 * Otros scripts en: 
-[http://foro.elhacker.net/scripting/libreria_de_funciones_y_scripts_batch_actualizado_260507-t163184.0.html]
+http://foro.elhacker.net/scripting/libreria_de_funciones_y_scripts_batch_actualizado_260507-t163184.0.html
 
 
 ~~~
