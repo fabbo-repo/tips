@@ -16,7 +16,7 @@ sudo apt update && sudo apt -y upgrade
 sudo apt install dkms
 ~~~
 
-* Descargar fichero ***realtek-rtl88xxau-dkms*** en el enlace:
+* Descargar fichero ***realtek-rtl8814au-dkms*** en el enlace:
 > https://http.kali.org/kali/pool/contrib/r/realtek-rtl8814au-dkms/realtek-rtl8814au-dkms_5.8.5.1~git20210730.824d1d2-0kali1_all.deb
 
 * Instalarlo
