@@ -22,3 +22,19 @@
 * psensor (medidor de sensores del hardware del sistema)
 
 * Lutris (apps para correr apps de windows)
+
+* Ulauncher (es una especie de buscador de apps, directorios, archivos, sitios web, etc. Se ejecuta con con CTRL + Espacio)
+
+* Stacer (monitoreo del sistema avanzado)
+
+* Timeshift (restauracion/backup)
+
+* kdenlive (editor de video)
+
+* VLC (vizualizador de videos)
+
+* Gnome Tweaks (editor de ventanas y sistema para gnome)
+
+* balena Etcher (flashear usb con un sistema operativo)
+
+* GIMP (editor de imagenes como Photoshop)
