@@ -9,6 +9,8 @@
 | -q | Eliminar la salida (quiet) | - |
 | -3 | Enviar los datos a través del sistema local (third party) | - |
 
+----------------------------
+
 ### Ejemplos de uso:
 
 * Copiar un archivo del sistema local al remoto
