@@ -29,3 +29,4 @@
   | -F, --fulltimes | Último mensaje para imprimir todas las fechas y horas de inicio y cierre de sesión |
   | -i, --ip | Similar a --dns, pero muestra el número de IP |
   | -n, --limit <número> | Número de líneas a mostrar |
+  
