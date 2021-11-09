@@ -1,3 +1,5 @@
+### Comandos:
+
 * vim (editor de texto por consola)
 
 * ranger (explorador de archivos basado en vim)
@@ -38,3 +40,7 @@
 * balena Etcher (flashear usb con un sistema operativo)
 
 * GIMP (editor de imagenes como Photoshop)
+
+* Krita (editor de imagenes como Photoshop)
+
+* BleachBit (limpieza de archivos, como CCleaner)
