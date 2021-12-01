@@ -25,7 +25,7 @@ sudo visudo
 > %nombreGrupo ALL = NOPASSWD:ALL
 
 ---------------------------------
-### Añadir un grupo a un usuario:
+### Asociar un grupo con un usuario:
 ~~~
 sudo usermod -aG nombreGrupo
 ~~~
