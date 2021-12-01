@@ -1,9 +1,26 @@
+### Mostrar información de particiones:
+~~~
+lsblk
+~~~
+Más detallada:
+~~~
+sudo blkid
+~~~
+
+-------------------
+### Opciones de montaje de discos:
+~~~
+mount | grep "^/dev"
+~~~
+
+-------------------
 ### Desmontar una partición:
 ~~~
 umount /dev/sdxy
 ~~~
 *Nota*: ***x*** es la letra de la unidad e ***y*** es el número de la partición
 
+-------------------
 ### Desconectar el puerto USB:
 ~~~
 udisks --detach /dev/sdx
