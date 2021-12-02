@@ -1,5 +1,7 @@
 https://www.redeszone.net/tutoriales/servidores/servidor-openssh-linux-configuracion-maxima-seguridad/
 
+https://www.solvetic.com/tutoriales/article/3991-como-crear-configurar-tunel-ssh-en-linux/
+
 ### Instalar servidor ssh:
 * Instalar OpenSSH:
 ~~~
