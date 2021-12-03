@@ -3,12 +3,12 @@ https://www.redeszone.net/tutoriales/servidores/servidor-openssh-linux-configura
 https://www.solvetic.com/tutoriales/article/3991-como-crear-configurar-tunel-ssh-en-linux/
 
 ### Instalar servidor ssh:
-* Instalar OpenSSH:
+* Instalar OpenSSH
 ~~~
 sudo apt-get install openssh-server
 ~~~
 
-* Editar configuración:
+* Editar configuración
 ~~~
 sudo nano /etc/ssh/sshd_config
 ~~~
@@ -29,34 +29,13 @@ sudo /etc/init.d/ssh restart
 ~~~
 
 ------------------------------------------------------------------------------------
-### Instalar y configurar fail2ban:
-* Instalar fail2ban (banear IPs que hagan muchos intentos de conexión fallidos)
+### Cambiar puerto de ssh
+* Abrir configuración
 ~~~
-sudo apt-get install fail2ban
-~~~
-
-* Entrar en la configuración
-~~~
-sudo nano /etc/fail2ban/jail.local
+sudo nano /etc/ssh/sshd_config
 ~~~
 
-* Añadir lo siguiente:
->	[ssh] \
->	enabled = true \
->	port = 1234 \
->	filter = sshd \
->	logpath = /var/log/auth.log \
->	maxretry = 3
-
-* Iniciar fail2ban:
-~~~
-sudo /etc/init.d/fail2ban start
-~~~
-
-* Ver logs de conexión:
-~~~
-grep /var/log/sshd/var/log/auth.log | less
-~~~
+* Ir a la línea **Port 22** y cambiar el número por otro
 
 ------------------------------------------------------------------------------------
 ### Para más seguridad:
