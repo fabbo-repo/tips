@@ -76,16 +76,16 @@ MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@op
   > HostKey /etc/ssh/ssh_host_rsa_key \
   > HostKey /etc/ssh/ssh_host_ecdsa_key
   * Generar unas claves RSA de 4096 bits nuevas:
-~~~
-ssh-keygen -f /etc/ssh/ssh_host_rsa_key -t rsa -b 4096
-~~~
+  ~~~
+  ssh-keygen -f /etc/ssh/ssh_host_rsa_key -t rsa -b 4096
+  ~~~
   * Generar nuevas claves ECDSA (con máxima longitud de 512 bits) o ED25519:
-~~~
-ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -t ecdsa -b 521
-~~~
-~~~
-ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -t ed25519
-~~~
+  ~~~
+  ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -t ecdsa -b 521
+  ~~~
+  ~~~
+  ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -t ed25519
+  ~~~
 
 ------------------------------------------------------------------------------------
 ### Comprobar conexiones:
