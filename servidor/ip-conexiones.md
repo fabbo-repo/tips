@@ -1,5 +1,15 @@
 ### Abrir servidor a red pública:
  https://www.nch.com.au/kb/es/10046.html
+ https://linuxhint.com/debian-static-ip-configuration/
+
+------------------------------------------------------------------------------------
+### Ver el gateway:
+* Ejecutar el comando
+~~~
+netstat -r -n
+~~~
+
+* Escoger aquel que tenga como flag ***UG***
 
 ------------------------------------------------------------------------------------
 ### Establecer ip estática (Ubuntu > 17.0)
