@@ -1,5 +1,5 @@
 ### Abrir servidor a red pública:
- https://www.nch.com.au/kb/es/10046.html
+ https://www.nch.com.au/kb/es/10046.html \
  https://linuxhint.com/debian-static-ip-configuration/
 
 ------------------------------------------------------------------------------------
