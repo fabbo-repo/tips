@@ -34,7 +34,7 @@ sudo nano /etc/netplan/01-network-manager-all.yml
 >......gateway4: 192.168.0.1 \
 >......nameservers: \
 >........search: [google.com] \
->........addresses: [8.8.8.8, 8.8.4.4] \
+>........addresses: [8.8.8.8, 8.8.4.4]
 
 * Comprobar errores:
 ~~~
