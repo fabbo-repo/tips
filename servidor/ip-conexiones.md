@@ -12,39 +12,44 @@ netstat -r -n
 * Escoger aquel que tenga como flag ***UG***
 
 ------------------------------------------------------------------------------------
-### Establecer ip estática (Ubuntu > 17.0)
+### Establecer ip estática
+
+https://support.cumulusnetworks.com/hc/en-us/articles/205200758-Configuring-etc-network-interfaces-with-a-bash-Script
+https://askubuntu.com/questions/168687/wireless-configuration-using-etc-network-interfaces-documentation
+https://linuxhint.com/debian_etc_network_interfaces/
 
 * Identificar interfaz de red:
 ~~~
 ifconfig -a
 ~~~
 
-* Abrir netplan:
+* Modificar ***interfaces***
 ~~~
-sudo nano /etc/netplan/01-network-manager-all.yml
-~~~
-
-* Poner lo siguiente: ***('.' representan espacios)***
->network:
->..version: 2 \
->..renderer: networkd \
->..ethernets: \
->....enp0s3: \
->......addresses: [192.168.0.50/24] \
->......gateway4: 192.168.0.1 \
->......nameservers: \
->........search: [google.com] \
->........addresses: [8.8.8.8, 8.8.4.4]
-
-* Comprobar errores:
-~~~
-sudo netplan generate
+sudo vim /etc/network/interfaces
 ~~~
 
-* Aplicar cambios:
+------------------------------------------------------------------------------------
+### Problemas dns:
+
+https://www.tecmint.com/set-permanent-dns-nameservers-in-ubuntu-debian/
+
+* Identificar problema ejecutando ping
 ~~~
-sudo netplan apply
+ping -c 2 deb.debian.org
 ~~~
+
+* Modificar ***resolv.conf***
+~~~
+sudo vim /etc/resolv.conf
+~~~
+
+* Comentar la siguiente línea
+> search .
+
+* Añadir la siguiente línea
+nameserver 8.8.8.8
+
+* Ejecutar ***ping*** otra vez, no es necesario reiniciar
 
 ------------------------------------------------------------------------------------
 ### Ejecutar script al iniciar equipo:
