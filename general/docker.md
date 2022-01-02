@@ -99,6 +99,21 @@
   docker build <path>
   ~~~
   > ***Nota;*** El ***path*** suele ser el directorio actual, denotado por: ***.***
+
+* Loguearse con cuenta de Docker para publicar imagenes
+  ~~~
+  docker login
+  ~~~
+  
+* Publicar una imagen en la cuenta de Docker
+  ~~~
+  docker push <nombre_usuario>/<imagen>
+  ~~~
+  > ***Nota:*** Una vez publicada la imagen se puede obtener así:
+  ~~~
+  docker pull <nombre_usuario>/<imagen>
+  ~~~
+  
 ------------------------------------------
 # Dockerfile:
 [documentación](https://docs.docker.com/engine/reference/builder/)
@@ -109,7 +124,10 @@
 * Espicificar un directorio de trabajo
   > WORKDIR \<path>
 
-* Copiar directorios y ficheros al contenedor
+* Copiar un fichero o directorio a una ruta del contenedor, también puede usar ficheros o directorios de urls y ficheros comprimidos que seran descomprimidos en el contenedor
+  > ADD \<host_path> \<contenedor_path>
+
+* Copiar directorios y ficheros locales al contenedor (a diferencia de ADD solo sirve para copiar ficheros o directorios locales sin aplicar descompresión en ningun momento)
   > COPY \<host_path> \<contenedor_path>
 
 * Ejecutar comandos para construir la imagen (dependencias)
@@ -120,3 +138,6 @@
 
 * Ejecutar comandos al arrancar el contenedor
   > CMD ["\<comando>","\<argumento1>","\<argumento2>",...]
+
+* Añadir detalles de autor
+  > MAINTAINER <nombre> <<correo>>
