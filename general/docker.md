@@ -1,3 +1,5 @@
+https://docker-curriculum.com/ me quede por network, mas de la mitad
+
 # Conceptos:
 
 * Docker:
@@ -27,6 +29,10 @@
 * Listar todos los contenedores, incluso los que no estén ejecutandose
   ~~~
   docker ps -a
+  ~~~
+  De forma alternativa:
+  ~~~
+  docker container ls
   ~~~
  
 * Obtener una imagen del registro remoto de Docker y guardarla en el sistema o registro local
@@ -119,6 +125,17 @@
   docker inspect <id_contenedor>
   ~~~
   
+* Listar redes de docker
+  ~~~
+  docker network ls
+  ~~~
+
+* Inspeccionar una red en especifico
+  ~~~
+  docker network inspect <id_red>
+  ~~~
+
+
 ------------------------------------------
 # Dockerfile:
 [documentación](https://docs.docker.com/engine/reference/builder/)
