@@ -140,4 +140,4 @@
   > CMD ["\<comando>","\<argumento1>","\<argumento2>",...]
 
 * Añadir detalles de autor
-  > MAINTAINER <nombre> <<correo>>
+  > MAINTAINER \<nombre> \<<correo>>
