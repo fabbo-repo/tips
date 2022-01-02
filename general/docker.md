@@ -114,6 +114,11 @@
   docker pull <nombre_usuario>/<imagen>
   ~~~
   
+* Inspeccionar datos y metadatos de un contenedor
+  ~~~
+  docker inspect <id_contenedor>
+  ~~~
+  
 ------------------------------------------
 # Dockerfile:
 [documentación](https://docs.docker.com/engine/reference/builder/)
