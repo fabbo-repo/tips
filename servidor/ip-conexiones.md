@@ -5,9 +5,9 @@
 ------------------------------------------------------------------------------------
 ### Ver el gateway:
 * Ejecutar el comando
-~~~
-netstat -r -n
-~~~
+	~~~
+	netstat -r -n
+	~~~
 
 * Escoger aquel que tenga como flag ***UG***
 
@@ -19,37 +19,77 @@ https://askubuntu.com/questions/168687/wireless-configuration-using-etc-network-
 https://linuxhint.com/debian_etc_network_interfaces/
 
 * Identificar interfaz de red:
-~~~
-ifconfig -a
-~~~
+	~~~
+	ifconfig -a
+	~~~
 
 * Modificar ***interfaces***
-~~~
-sudo vim /etc/network/interfaces
-~~~
+	~~~
+	sudo vim /etc/network/interfaces
+	~~~
 
 ------------------------------------------------------------------------------------
 ### Problemas dns:
 
-https://www.tecmint.com/set-permanent-dns-nameservers-in-ubuntu-debian/
-
 * Identificar problema ejecutando ping
-~~~
-ping -c 2 deb.debian.org
-~~~
+	~~~
+	ping -c 2 google.com
+	~~~
 
 * Modificar ***resolv.conf***
-~~~
-sudo vim /etc/resolv.conf
-~~~
+	~~~
+	sudo vim /etc/resolv.conf
+	~~~
 
 * Comentar la siguiente línea
-> search .
+	> search .
 
 * Añadir la siguiente línea
-nameserver 8.8.8.8
+	nameserver 8.8.8.8
+	
+* Actualizar repositorios e instalar ***resolvconf***
+	~~~
+	sudo apt update && sudo apt install -y resolvconf
+	~~~
+	> **Nota**: En caso de que de error de dominios realizar otra vez los pasos
 
-* Ejecutar ***ping*** otra vez, no es necesario reiniciar
+* Iniciar y habilitar ***resolvconf.service*** (habilitar para que se ejecute al inicio del arranque sel sistema)
+	~~~
+	sudo systemctl start resolvconf.service
+	~~~
+	~~~
+	sudo systemctl enable resolvconf.service
+	~~~
+	~~~
+	sudo systemctl status resolvconf.service
+	~~~
+
+* Editar configuración:
+	~~~
+	sudo vim /etc/resolvconf/resolv.conf.d/head
+	~~~
+
+* Añadir las siguientes líneas (hacen referencia a los dns de ***google***)
+	> nameserver 8.8.8.8\
+	> nameserver 8.8.4.4
+
+* Reiniciar ***resolvconf.service*** y ***systemd-resolved***
+	~~~
+	sudo systemctl restart resolvconf.service
+	~~~
+	~~~
+	sudo systemctl restart systemd-resolved.service
+	~~~
+	
+* Verificar que las líneas añadidas se hayan escrito en ***resolv.cong***, de no ser así, reiniciar el sistema
+	~~~
+	sudo cat /etc/resolv.conf
+	~~~
+
+* Ejecutar ***ping*** otra vez
+	~~~
+	ping -c 2 google.com
+	~~~
 
 ------------------------------------------------------------------------------------
 ### Ejecutar script al iniciar equipo:
