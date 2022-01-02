@@ -1,9 +1,9 @@
-### Abrir servidor a red pública:
+# Abrir servidor a red pública:
  https://www.nch.com.au/kb/es/10046.html \
  https://linuxhint.com/debian-static-ip-configuration/
 
 ------------------------------------------------------------------------------------
-### Ver el gateway:
+# Ver el gateway:
 * Ejecutar el comando
 	~~~
 	netstat -r -n
@@ -12,7 +12,7 @@
 * Escoger aquel que tenga como flag ***UG***
 
 ------------------------------------------------------------------------------------
-### Establecer ip estática
+# Establecer ip estática
 
 https://support.cumulusnetworks.com/hc/en-us/articles/205200758-Configuring-etc-network-interfaces-with-a-bash-Script
 https://askubuntu.com/questions/168687/wireless-configuration-using-etc-network-interfaces-documentation
@@ -29,7 +29,7 @@ https://linuxhint.com/debian_etc_network_interfaces/
 	~~~
 
 ------------------------------------------------------------------------------------
-### Problemas dns:
+# Problemas dns:
 
 * Identificar problema ejecutando ping
 	~~~
@@ -92,7 +92,7 @@ https://linuxhint.com/debian_etc_network_interfaces/
 	~~~
 
 ------------------------------------------------------------------------------------
-### Ejecutar script al iniciar equipo:
+# Ejecutar script al iniciar equipo:
 
 * Dar permisos de ejecución:
 ~~~
@@ -126,7 +126,7 @@ sudo systemctl enable script
 ~~~
 
 ------------------------------------------------------------------------------------
-Obtener IP pública estática:
+# Obtener IP pública estática:
 
 1. Entrar en router Vodafone:
 * En el navegador introduce accede a la dirección (http://192.168.0.1/)
