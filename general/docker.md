@@ -84,6 +84,21 @@
   docker container prune
   ~~~
   
+* Detener contenedor (recibe una señal ***SIGTERM*** y luego de un tiempo ***SIGKILL***)
+  ~~~
+  docker stop <id_contenedor>
+  ~~~
+
+* Ver puertos vinculados al contenedor
+  ~~~
+  docker port <id_contenedor>
+  ~~~
+  
+* Construir una imagen a partir de un Dockerfile
+  ~~~
+  docker build <path>
+  ~~~
+  > ***Nota;*** El ***path*** suele ser el directorio actual, denotado por: ***.***
 ------------------------------------------
 # Dockerfile:
 [documentación](https://docs.docker.com/engine/reference/builder/)
