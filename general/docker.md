@@ -139,5 +139,9 @@
 * Ejecutar comandos al arrancar el contenedor
   > CMD ["\<comando>","\<argumento1>","\<argumento2>",...]
 
-* Añadir detalles de autor
-  > MAINTAINER \<nombre> \<<correo>>
+* Añadir detalles de autor (el correo va entre dimantes: <>)
+  > MAINTAINER \<nombre> \<correo>
+  
+* Añadir metadatos (tanto el dato como el valor van entre comillas)
+  > LABEL \<dato>=\<valor>\
+  > Ejemplo: LABEL "web.nombre"="custom web"
