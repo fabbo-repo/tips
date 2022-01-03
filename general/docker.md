@@ -1,4 +1,4 @@
-https://docker-curriculum.com/ me quede por network, mas de la mitad
+[Fuente](https://docker-curriculum.com/)
 
 # Conceptos:
 
@@ -12,6 +12,10 @@ https://docker-curriculum.com/ me quede por network, mas de la mitad
   > Servicio encargado de toda la gestión, creación y ejecución de los contenedores, se ejecuta en el sistema del host.
 * Docker Hub:
   > Registro de todas las imagenes, por defecto es el registro remoto.
+* Docker Compose:
+  > Herramienta para crear y ejecutar múltiples contenedores Docker, recomendable para contenedores y servicios con dependencias
+* Docker Swarm:
+  > Clustering con Docker
 
 -----------------------------------------
 # Comandos útiles Docker:
@@ -56,6 +60,7 @@ https://docker-curriculum.com/ me quede por network, mas de la mitad
   > ***-p \<puerto_host>:\<puerto_contenedor>*** vincula los puertos del contenedor a los del host\
   > ***-P*** vincula los puertos expuestos a puertos aleatorios del host\
   > ***--name \<nombre>*** da un nombre al contenedor\
+  > ***--net <nombre_red>*** lanzar contenedores en una red de docker\
   > Más opciones en [docker run](https://docs.docker.com/engine/reference/commandline/run/)
     
 * Ejecutar consola (tty) en modo interactivo en un contenedor a ejecutar
@@ -130,11 +135,15 @@ https://docker-curriculum.com/ me quede por network, mas de la mitad
   docker network ls
   ~~~
 
-* Inspeccionar una red en especifico
+* Inspeccionar una red de docker
   ~~~
   docker network inspect <id_red>
   ~~~
 
+* Crear una red *"bridge"* de docker (permite la comunicación entre contenedores de forma aislada)
+  ~~~
+  docker network create <nombre>
+  ~~~
 
 ------------------------------------------
 # Dockerfile:
@@ -167,3 +176,48 @@ https://docker-curriculum.com/ me quede por network, mas de la mitad
 * Añadir metadatos (tanto el dato como el valor van entre comillas)
   > LABEL \<dato>=\<valor>\
   > Ejemplo: LABEL "web.nombre"="custom web"
+
+----------------------------------------
+# Docker Compose:
+
+* Instalación con python:
+  pip install docker-compose
+
+* Lanzar los contenedores de un fichero ***.yml***
+  ~~~
+  docker-compose up
+  ~~~
+  
+* Destruir los contenedores:
+  ~~~
+  docker-compose down -v
+  ~~~
+
+* Ejecutar comando en contenedor
+  ~~~
+  docker-compose run <nombre_contenedor> <comando>
+  ~~~
+  ***Nota:*** Para acceder a la consola del contenedor, se puede usar el comando *bash*
+
+* Ejemplo 1 de estructura:
+  ~~~
+  version: "3"                      # Version de la aplicación docker
+  services:
+    servicio1:                      # Nombre de uno de los servicios/contenedores
+      image: <imagen>               # Nombre de la imagen del servicio 1
+      container_name: servicio1     # Nombre del contenedor
+      environment:                  # Especificar variables de entorno en el contenedor
+        - VAR1=3                    # Variable de entorno valdrá 1 al ejecutar
+        - VAR2                      # El valor de VAR2 se le asignará por consola
+      env_file:                     # Se usa para pasar un ficher con variables de entorno
+        - fichero.env               # Solo ficheros con extensión .env
+      ports:
+        - <puerto_host>:<puerto_contenedor>
+      volumes:                      # Vincula directorio del host con el servicio/contenedor
+        - <directorio_host>:<directorio_contenedor>
+    servicio2:
+      image: <imagen>
+      command: <comando>            # Comando a ejecutar una vez se lance el contenedor
+      depends_on:                   # Se usa para indicar los servicios que 
+        - servicio1                 # se deben ejecutar antes que este
+  ~~~
