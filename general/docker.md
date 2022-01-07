@@ -167,7 +167,7 @@
 * Vincular un puerto
   > EXPOSE \<puerto>
 
-* Ejecutar comandos al arrancar el contenedor
+* Ejecutar comando al arrancar el contenedor (solo puede haber uno en el Dockerfile)
   > CMD ["\<comando>","\<argumento1>","\<argumento2>",...]
 
 * Añadir detalles de autor (el correo va entre dimantes: <>)
