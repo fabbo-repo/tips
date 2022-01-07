@@ -1,53 +1,72 @@
-### Añadir usuario local:
-~~~
-sudo useradd -m nombreUsuario 	(-m para crear las carpetas por defecto en home)
-
-sudo passwd nombreUsuario
-
-sudo usermod nombreUsuario --shell /bin/bash
-~~~
-o mejor:
-~~~
-sudo adduser nombreUsuario
-~~~
-
-------------------------------------------------------------------------------------
-### Cambiar nombre de usuario:
-~~~
-sudo usermod -l nombreUsuarioNuevo nombreUsuarioViejo
-~~~
-
-------------------------------------------------------------------------------------
-### Cambiar de usuario:
-~~~
-su - nombreUsuario
-~~~
+# Añadir usuario local:
+*
+  ~~~
+  sudo useradd -m <nombreUsuario>
+  ~~~
+  > ***-m*** para crear las carpetas por defecto en home
+*
+  ~~~
+  sudo passwd <nombreUsuario>
+  ~~~
+*
+  ~~~
+  sudo usermod <nombreUsuario> --shell /bin/bash
+  ~~~
+  o mejor:
+  ~~~
+  sudo adduser <nombreUsuario>
+  ~~~
 
 ------------------------------------------------------------------------------------
-### Eliminar usuario local:
-~~~
-sudo userdel --remove nombreUsuario
-~~~
+# Cambiar nombre de usuario:
+*
+  ~~~
+  sudo usermod -l <nombreUsuarioNuevo> <nombreUsuarioViejo>
+  ~~~
+  
+------------------------------------------------------------------------------------
+# Cambiar contraseña de un usuario:
+*
+  ~~~
+  sudo passwd <nombreUsuario>
+  ~~~
 
 ------------------------------------------------------------------------------------
-### Ver los usuarios del sistema:
-~~~
-awk -F: '{ print $1}' /etc/passwd
-~~~
+# Cambiar de usuario:
+*
+  ~~~
+  su - <nombreUsuario>
+  ~~~
 
 ------------------------------------------------------------------------------------
-### Ver el hash de las contraseñas de los usuarios del sistema:
-~~~
-sudo cat /etc/shadow
-~~~
+# Eliminar usuario local:
+*
+  ~~~
+  sudo userdel --remove <nombreUsuario>
+  ~~~
 
 ------------------------------------------------------------------------------------
-### Añadir permisos root a un usuario:
+# Ver los usuarios del sistema:
+*
+  ~~~
+  awk -F: '{ print $1}' /etc/passwd
+  ~~~
+
+------------------------------------------------------------------------------------
+# Ver el hash de las contraseñas de los usuarios del sistema:
+*
+  ~~~
+  sudo cat /etc/shadow
+  ~~~
+
+------------------------------------------------------------------------------------
+# Añadir permisos root a un usuario:
+
 * Editar fichero sudo
-~~~
-sudo visudo
-~~~
+  ~~~
+  sudo visudo
+  ~~~
 * Añadir debajo de root la siguiente linea
-~~~
-nombreUsuario ALL=ALL
-~~~
+  ~~~
+  <nombreUsuario> ALL=ALL
+  ~~~
