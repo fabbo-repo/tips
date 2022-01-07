@@ -11,22 +11,27 @@
   ~~~
 
 ----------------------------------
-# Usar esquema de colores de nirvana
+# Cambiar esquema de colores
 
-* Clonar repositorio de nirvana 
+**Favorito: mojave**
+
+* Clonar repositorio
   ~~~
-  git clone https://github.com/duckwork/nirvana.git
+  git clone <repositorio>
   ~~~
+  > **Ejemplos de respositorios:**
+  > * https://github.com/marcopaganini/mojave-vim-theme.git
+  > * https://github.com/duckwork/nirvana.git
   
 * Moverlo al direcyotio colors de vim
   ~~~
-  sudo mv nirvana/colors/nirvana.vim  /usr/share/vim/vimXX/colors/
+  sudo mv <path_repositorio>/<esquema>.vim  /usr/share/vim/vimXX/colors/
   ~~~
   > ***Nota:*** En XX va la versión de vim
 
 * Abrir vim y cambiar el esquema de colores
   ~~~
-  :colorscheme nirvana
+  :colorscheme <esquema>
   ~~~
   
 * Editar ***vimrc***
@@ -35,5 +40,5 @@
   ~~~
   
 * Añadir lo siguiente
-  > colorscheme nirvana\
+  > colorscheme \<esquema>\
   > syntax on
