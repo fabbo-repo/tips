@@ -1,7 +1,7 @@
-### Obtener información de sesiones
+# Obtener información de sesiones
 
 * Uso del comando ***who***, se usa para mostrar que usuarios están conectados y las direcciones IP de origen.
-  > Opciones: \
+  > Opciones:
   > * Para mostrar el último arranque para los usuarios conectados, agregue el **-b -u**.
 
 * Comando ***w***, brinda más información sobre los procesos en ejecución para cada usuario y sobre las conexiones SSH **inactivas**.
@@ -17,7 +17,7 @@
   | -V, --version | Muestra información sobre la versión |
   
 * Comando ***last***, muestra la lista de los últimos usuarios que iniciaron sesión, por defecto usa el fichero **/var/log/wtmp**
-  > Para obtener las sesiones **activas**: \
+  > Para obtener las sesiones **activas**:
   > ~~~
   > last | grep still
   > ~~~
