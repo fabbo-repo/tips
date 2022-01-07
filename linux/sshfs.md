@@ -1,4 +1,4 @@
-### Montar sistema de archivos con sshfs:
+# Montar sistema de archivos con sshfs:
 
 * Crear el punto de montaje
   ~~~
