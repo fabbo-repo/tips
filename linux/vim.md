@@ -1,4 +1,4 @@
-### Reemplazar un string por otro:
+# Reemplazar un string por otro:
 
 * Primera ocurrencia
   ~~~
