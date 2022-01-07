@@ -20,8 +20,8 @@
   git clone <repositorio>
   ~~~
   > **Ejemplos de respositorios:**
-  > * https://github.com/marcopaganini/mojave-vim-theme.git
-  > * https://github.com/duckwork/nirvana.git
+  > * Esquema de mojave: https://github.com/marcopaganini/mojave-vim-theme.git
+  > * Esquema de nirvana: https://github.com/duckwork/nirvana.git
   
 * Moverlo al direcyotio colors de vim
   ~~~
