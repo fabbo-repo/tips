@@ -1,16 +1,12 @@
 # Añadir usuario local:
 *
   ~~~
-  sudo useradd -m <nombreUsuario>
+  sudo useradd <nombreUsuario> -m -s /bin/bash 
   ~~~
   > ***-m*** para crear las carpetas por defecto en home
 *
   ~~~
   sudo passwd <nombreUsuario>
-  ~~~
-*
-  ~~~
-  sudo usermod <nombreUsuario> --shell /bin/bash
   ~~~
   o mejor:
   ~~~
@@ -24,6 +20,12 @@
   sudo usermod -l <nombreUsuarioNuevo> <nombreUsuarioViejo>
   ~~~
   
+------------------------------------------------------------------------------------
+# Cambiar shell de un usuario:
+*
+  ~~~
+  sudo usermod <nombreUsuario> --shell /bin/bash
+  ~~~
 ------------------------------------------------------------------------------------
 # Cambiar contraseña de un usuario:
 *
