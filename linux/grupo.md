@@ -5,33 +5,33 @@ sudo groupadd nombreGrupo
 
 ---------------------------------
 ### Ver los grupos del sistema:
-~~~
-cat /etc/group
-~~~
+  ~~~
+  cat /etc/group
+  ~~~
 
 ---------------------------------
 ### Ver los grupos de tu usuario:
-~~~
-groups
-~~~
+  ~~~
+  groups
+  ~~~
 
 ---------------------------------
 ### Añadir permisos root a un grupo:
 * Editar fichero sudo
-~~~
-sudo visudo
-~~~
+  ~~~
+  sudo visudo
+  ~~~
 * Añadir debajo de %root la siguiente linea
-> %nombreGrupo ALL = NOPASSWD:ALL
+  > %nombreGrupo ALL = NOPASSWD:ALL
 
 ---------------------------------
-### Asociar un grupo con un usuario:
-~~~
-sudo usermod -aG nombreGrupo
-~~~
+### Asociar un grupo o varios a un usuario:
+  ~~~
+  sudo usermod -aG <nombreGrupo1>,<nombreGrupo2>,...
+  ~~~
 
 ---------------------------------
 ### Eliminar a un usuario de un grupo:
-~~~
-sudo gpasswd -d nombreUsuario nombreGrupo
-~~~
+  ~~~
+  sudo gpasswd -d nombreUsuario nombreGrupo
+  ~~~
