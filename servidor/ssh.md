@@ -35,31 +35,74 @@ sudo /etc/init.d/ssh restart
 # Modos de autenticación:
 
 * Vía usuario y clave, en el archivo de configuración del servidor debe estar la siguiente línea
-> PasswordAuthentication yes
-***Nota:*** Con la siguiente línea no se permiten las conexiones con interacción de teclado
-> ChallengeResponseAuthentication no
+
+  > PasswordAuthentication yes
+  
+  ***Nota:*** Con la siguiente línea no se permiten las conexiones con interacción de teclado
+  
+  > ChallengeResponseAuthentication no
+
+* Vía usuario y clave con One Time Password (Google Authenticator). Partiendo del apartado anterior, se debe instalar algunas dependencias en el servidor
+  ~~~
+  sudo apt install libpam0g-dev make gcc wget ssh
+  ~~~
+  Para luego instalar google-authenticator
+  ~~~
+  sudo apt install libpam-google-authenticator
+  ~~~
+  Y posteriormente ejecutarlo sin permisos de ***root***
+  ~~~
+  google-authenticator
+  ~~~
+  Preguntará si queremos que nuestros tokens de acceso estén basados en el tiempo y mostrará la clave privada, la clave de verificación y los códigos de emergencia, se recomienda guardar todas las claves. Luego se debe indicar que se guarden los cambios en el directorio **/home** y nos preguntará si queremos que cada token sea utilizado una única vez (limitará a un inicio de sesión cada 30 segundos), para protección frente a posibles ataques MITM seleccionamos que sí. Por último, nos preguntará si queremos ampliar el periodo de validez de cada código en lugar de solo 1 minuto y 30 segundos (para evitar problemas de sincronización de tiempo). Para evitar ataques de fuerza bruta también podemos limitar las conexiones a 3 por cada 30 segundos.\
+  Luego se debe abrir el fichero de configuración del servidor **/etc/pam.d/sshd** y añadir al final la siguiente línea
+  
+  > auth required pam_google_authenticator.so
+  
+  Por último en **/etc/ssh/sshd_config** debemos cambiar ***ChallengeResponseAuthentication*** a ***yes*** y reiniciar ***sshd***
+  
+  ~~~
+  sudo /etc/init.d/ssh restart
+  ~~~
 
 * Vía clave pública SSH, debe estar la siguiente línea en la configuración
-> PubkeyAuthentication yes
+  
+  > PubkeyAuthentication yes
+  
   Adicionalmente, en el cliente se deben crear las claves públicas, en el caso de RSA de 4096b se debe ejecutar el siguiente comando:
+  
   ~~~
   ssh-keygen -t rsa -b 4096
   ~~~
- Para posteriormente guardar la clave pública en **/home/$USER/ssh/id_rsa** y poner una contraseña a la componente privada (de esta forma, pedirá una contraseña al utilizar la clave privada).\
- Una vez creada, se envia la clave pública al servidor con el siguiente comando
- ~~~
- ssh-copy-id <usuario>@<ip_servidor>
- ~~~
- Opcionalmente se puede modificar la siguiente línea en la configuración del servidor para evitar escribir usuario y contraseña
- > PasswordAuthentication no
+  Para posteriormente guardar la clave pública en **/home/$USER/ssh/id_rsa** y poner una contraseña a la componente privada (de esta forma, pedirá una contraseña al utilizar la clave privada).\
+  Una vez creada, se envia la clave pública al servidor con el siguiente comando
+  
+  ~~~
+  ssh-copy-id <usuario>@<ip_servidor>
+  ~~~
+  Opcionalmente se puede modificar la siguiente línea en la configuración del servidor para evitar escribir usuario y contraseña
+  > PasswordAuthentication no
+
+* Vía clave pública SSH con One Time Password (Google Authenticator). Para este caso, se parte del apartado anterior y se usan los mismos pasos que para la vía usuario y clave con One Time Password más que se debe tener en el fichero **/etc/ssh/sshd_config** las siguientes líneas
+
+  > PasswordAuthentication no\
+  > ChallengeResponseAuthentication yes\
+  > PubKeyAuthentication yes\
+  > UsePAM yes\
+  > AuthenticationMethods publickey,keyboard-interactive
+  
+  Y en el fichero **/etc/pam.d/sshd**
+  
+  > #@include common-auth\
+  > auth required pam_google_authenticator.so
 
 
 ------------------------------------------------------------------------------------
 ### Cambiar puerto de ssh
 * Abrir configuración
-~~~
-sudo nano /etc/ssh/sshd_config
-~~~
+  ~~~
+  sudo nano /etc/ssh/sshd_config
+  ~~~
 
 * Ir a la línea **Port 22** y cambiar el número por otro
 
