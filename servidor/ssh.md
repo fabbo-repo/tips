@@ -1,10 +1,11 @@
-https://www.redeszone.net/tutoriales/servidores/servidor-openssh-linux-configuracion-maxima-seguridad/
+[Fuente1](https://www.redeszone.net/tutoriales/servidores/servidor-openssh-linux-configuracion-maxima-seguridad/)
 
-https://www.solvetic.com/tutoriales/article/3991-como-crear-configurar-tunel-ssh-en-linux/
+[Fuente2](https://www.solvetic.com/tutoriales/article/3991-como-crear-configurar-tunel-ssh-en-linux/)
 
-https://www.redeszone.net/tutoriales/seguridad/servidor-ssh-comprobar-seguridad-proteger/
+[Fuente3](https://www.redeszone.net/tutoriales/seguridad/servidor-ssh-comprobar-seguridad-proteger/)
 
-### Instalar servidor ssh:
+------------------------------------------------------------------------------------
+# Instalar ssh en servidor:
 * Instalar OpenSSH
 ~~~
 sudo apt-get install openssh-server
@@ -31,6 +32,29 @@ sudo /etc/init.d/ssh restart
 ~~~
 
 ------------------------------------------------------------------------------------
+# Modos de autenticación:
+
+* Vía usuario y clave, en el archivo de configuración del servidor debe estar la siguiente línea
+> PasswordAuthentication yes
+***Nota:*** Con la siguiente línea no se permiten las conexiones con interacción de teclado
+> ChallengeResponseAuthentication no
+
+* Vía clave pública SSH, debe estar la siguiente línea en la configuración
+> PubkeyAuthentication yes
+  Adicionalmente, en el cliente se deben crear las claves públicas, en el caso de RSA de 4096b se debe ejecutar el siguiente comando:
+  ~~~
+  ssh-keygen -t rsa -b 4096
+  ~~~
+ Para posteriormente guardar la clave pública en **/home/$USER/ssh/id_rsa** y poner una contraseña a la componente privada (de esta forma, pedirá una contraseña al utilizar la clave privada).\
+ Una vez creada, se envia la clave pública al servidor con el siguiente comando
+ ~~~
+ ssh-copy-id <usuario>@<ip_servidor>
+ ~~~
+ Opcionalmente se puede modificar la siguiente línea en la configuración del servidor para evitar escribir usuario y contraseña
+ > PasswordAuthentication no
+
+
+------------------------------------------------------------------------------------
 ### Cambiar puerto de ssh
 * Abrir configuración
 ~~~
@@ -40,8 +64,8 @@ sudo nano /etc/ssh/sshd_config
 * Ir a la línea **Port 22** y cambiar el número por otro
 
 ------------------------------------------------------------------------------------
-### Extra seguridad:
-* En el fichero de configuración ***/etc/ssh/sshd_config***, se pueden cambiar opciones extras \
+# Extra seguridad:
+* En el fichero de configuración del servidor **/etc/ssh/sshd_config**, se pueden cambiar opciones extras \
   1- **LoginGraceTime**: Establece el tiempo necesario para introducir la contraseña \
   2- **MaxAuthTries**: Número de intentos permitidos al introducir la contraseña antes de desconectarnos \
   3- **MaxStartups**: Número de logins simultáneos desde una IP, evita parcialmente la fuerza bruta \
@@ -55,19 +79,14 @@ sudo nano /etc/ssh/sshd_config
   > LoginGraceTime 30 \
   > MaxAuthTries 3 \
   > MaxStartups 3 \
-  > AllowUsers sergio sergio2 \
-  > DenyUsers adrian adrian2
+  > AllowUsers user1 user2 \
+  > DenyUsers user3 user4
 
 * Configurar algoritmos de intercambio de claves, el cifrado simétrico y la configuración del HMAC de comprobación de integridad, se recomienda los siguientes ajustes:
-~~~
-KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256
-~~~
-~~~
-Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
-~~~
-~~~
-MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
-~~~
+> KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256\
+> Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr\
+> MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
+
 *Nota*: Puede que clientes antiguos de no sean compatibles con estas configuraciones
 
 * Crear nuevas claves de RSA o DSA por unas con mayor longitud de bits. Se deben poner en el fichero de configuración (o sustituir las anteriores), remendación de RSA con 4096 bits o superior. 
@@ -88,7 +107,7 @@ MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@op
   ~~~
 
 ------------------------------------------------------------------------------------
-### Comprobar conexiones:
+# Comprobar conexiones:
 * Inicios de sesion aceptadas:
 ~~~
 sudo cat /var/log/auth* | grep Accepted | awk '{print $1 " " $2 "\t" $3 "\t" $11 "\t" $9 }'
