@@ -44,3 +44,5 @@
 * Krita (editor de imagenes como Photoshop)
 
 * BleachBit (limpieza de archivos, como CCleaner)
+
+* Mark Text (editor de texto)
