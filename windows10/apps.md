@@ -79,3 +79,7 @@
 39- Tor Browser
 
 40- Eclipse
+
+41- WinMerge (comparar archivos, como meld de linux)
+
+42- Mark Text (editor de texto)
