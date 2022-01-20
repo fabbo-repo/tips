@@ -187,7 +187,7 @@
   ~~~
   docker-compose up -d
   ~~~
-  
+  ***Nota:*** Si el contenedor ya se ha lanzado se puede usar la flag **--force-recreate**
 * Destruir los contenedores:
   ~~~
   docker-compose down -v
