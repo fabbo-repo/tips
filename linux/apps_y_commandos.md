@@ -12,6 +12,8 @@
 
 * ncdu (para analsis de directorios y ficheros del disco)
 
+* alsamixer (ajustar volumen por consola)
+
 -----------------------------------------------------------
 ### Apps:
 
@@ -44,5 +46,7 @@
 * Krita (editor de imagenes como Photoshop)
 
 * BleachBit (limpieza de archivos, como CCleaner)
+
+* Variety (Wallpapers rotativos)
 
 * Mark Text (editor de texto)
