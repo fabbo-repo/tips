@@ -1,9 +1,0 @@
-- Añadir repositorio:
--> sudo wget -0 - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
--> sudo echo 'deb https://packages.microsoft.com/repos/ms-teams stable main' > /etc/apt/sources.list.d/packages-microsoft.list
-
-- Actualizar repositorios:
--> sudo apt update
-
-- Instalar teams:
--> sudo apt install teams
