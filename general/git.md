@@ -1,3 +1,5 @@
+[Apoyo](https://gitexplorer.com)
+---------------------------------
 ### Extensión de git para VSCode:
 > Git Graph
 
@@ -11,7 +13,7 @@ Este comando crea la carpeta ***.git***
 ---------------------------------
 ### Hacer monitorización y seguimiento de solo un fichero o directorio		(área de ensayo)
 ~~~
-git add path
+git add <path>
 ~~~
 ***path*** se refiere a la ruta del fichero o directorio
 
@@ -43,7 +45,7 @@ git log --oneline
 ---------------------------------
 ### Regresar a un commit previo
 ~~~
-git reset --hard id
+git reset --hard <id>
 ~~~
 Siendo ***id*** el identificador del commit, se puede ver con:
 ~~~
@@ -66,20 +68,21 @@ git config --global user.username "Nombre" user.mail "ejemplo@gmal.com"
 ---------------------------------
 ### Añadir lo que se encuentra en el repositorio local a github
 ~~~
-git remote add origin https://github.com/FabboBox/VSTestRepo.git
+git remote add origin <url>
 ~~~
+***url*** se refiere al enlace del repositorio ubicado en remoto
 
 ---------------------------------
 ### Crear una rama main
 ~~~
-git branch -M nombre
+git branch -M <nombre>
 ~~~
 ***nombre*** hace referencia al nombre de la rama
 
 ---------------------------------
 ### Crear rama adicional
 ~~~
-git branch nombre 
+git branch <nombre>
 ~~~
 
 ---------------------------------
@@ -91,19 +94,19 @@ git branch
 ---------------------------------
 ### Cambiar de rama
 ~~~
-git checkout nombre
+git checkout <nombre>
 ~~~
 
 ---------------------------------
 ### Hacer merge de una rama a la que estás ubicado actualmnte
 ~~~
-git merge nombre
+git merge <nombre>
 ~~~
 
 ---------------------------------
 ### Crear una tag
 ~~~
-git tag nombre -m "desc"
+git tag <nombre> -m "desc"
 ~~~
 ***nombre*** hace referencia al nombre de la tag y ***"desc"*** hace referencia a la descripción del commit
 
@@ -116,6 +119,6 @@ git push --tags
 ---------------------------------
 ### Clonar repositorio a local
 ~~~
-git clone url
+git clone <url>
 ~~~
 ***url*** se refiere al enlace del repositorio ubicado en remoto
