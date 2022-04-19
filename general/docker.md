@@ -199,6 +199,11 @@
   ~~~
   ***Nota:*** Para acceder a la consola del contenedor, se puede usar el comando *bash*
 
+* Obtener ID:
+  ~~~
+  docker-compose run app id
+  ~~~
+
 * Ejemplo 1 de estructura:
   ~~~
   version: "3"                      # Version de la aplicación docker
