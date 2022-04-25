@@ -137,14 +137,20 @@ sudo /etc/init.d/ssh restart
   > HostKey /etc/ssh/ssh_host_ed25519_key \
   > HostKey /etc/ssh/ssh_host_rsa_key \
   > HostKey /etc/ssh/ssh_host_ecdsa_key
-  * Generar unas claves RSA de 4096 bits nuevas:
+
+  * Generar claves RSA de 4096 bits:
   ~~~
   ssh-keygen -f /etc/ssh/ssh_host_rsa_key -t rsa -b 4096
   ~~~
-  * Generar nuevas claves ECDSA (con máxima longitud de 512 bits) o ED25519:
+  * Generar claves DSA de 2048 bits:
   ~~~
-  ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -t ecdsa -b 521
+  ssh-keygen -f /etc/ssh/ssh_host_dsa_key -t dsa -b 1024
   ~~~
+  * Generar claves ECDSA (con máxima longitud de 512 bits):
+  ~~~
+  ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -t ecdsa -b 512
+  ~~~
+  * Generar claves ED25519:
   ~~~
   ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -t ed25519
   ~~~
