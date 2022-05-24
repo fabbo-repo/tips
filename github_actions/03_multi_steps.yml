@@ -1,0 +1,49 @@
+name: MULTI_STEPS
+
+# Control when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in paralallel
+jobs:
+  # This workflow contains a singgle job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Step 1 - Log the pre-build disc space
+        run: df
+
+      - name: Step 2 - Checkout the main github branch
+        uses: actions/checkout@v2
+      
+      - name: Step 3 - Checkout JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      
+      - name: Step 4 - Build jakarta web app with maven
+        run: echo mvn -B package --file pom.xml
+
+      - name: Step 5 - Build the native android app
+        run: |
+          echo The SELENIUM_JAR_PATH
+          echo $SELENIUM_JAR_PATH
+
+      - name: Step 6 - Run your Selenium tests
+        run: |
+          echo Here is the ANDROID_SDK_ROOT
+          echo $ANDROID_SDK_ROOT
+          
+      - name: Step 7 - Log build tool versions
+        run: |
+          git --version
+          mvn --version
+          gradle --version
+
+      - name: Step 8 - Log the post-build disc space
+        run: echo df
