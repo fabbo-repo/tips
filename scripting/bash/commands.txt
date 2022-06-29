@@ -1,0 +1,107 @@
+# Obtener el ID del usuario:
+~~~
+whoami
+~~~
+
+# Obtener el ID del usuario ID de grupo:
+~~~
+id [-u] [-n]
+~~~
+
+# Obtener info del SO:
+~~~
+uname [-s -r] [-v]
+~~~
+
+# Ver uso de todos los discos:
+~~~
+df -h
+~~~
+
+# Ver procesos ejecutados con privilegios de root
+~~~
+ps -u root
+~~~
+
+# Ver las primeras 3 tareas ejecutandose por uso de CPU
+~~~
+top -n 3
+~~~
+
+# Encontrar un fichero determinado en un directorio:
+~~~
+find . -name "<nombre>"
+~~~
+
+# Ver fecha de modificacion de un fichero:
+~~~
+date -r <fichero>
+~~~
+
+# Listar por orden el contenido de un fichero:
+~~~
+sort <fichero>
+~~~
+
+# Listar el contenido de un fichero eliminando lineas repetidas
+~~~
+uniq <fichero>
+~~~
+
+# Obtener la segunda palabra de cada linea de un fichero:
+~~~
+cut -d ' ' -f2 <fichero>
+~~~
+
+# Archivar un directorio a .tar:
+~~~
+tar -cf <nombre>.tar <direcotrio>
+~~~
+
+# Comprimir un directorio a .tar.gz:
+~~~
+tar -czf <nombre>.tar.gz <direcotrio>
+~~~
+
+# Listar contenido de un fichero .tar:
+~~~
+tar -tf <nombre>.tar
+~~~
+
+# Desarchivar un fichero .tar:
+~~~
+tar -xf <nombre>.tar <direcotrio>
+~~~
+
+# Desomprimir un fichero .tar.gz
+~~~
+tar -xzf <nombre>.tar.gz <direcotrio>
+~~~
+
+# Comprimir un directorio a .zip:
+~~~
+zip -r <nombre>.zip <direcotrio>
+~~~
+
+# Listar contenido de un fichero .zip:
+~~~
+unzip -l <nombre>.zip
+~~~
+
+# Descomprimir un fichero .zip:
+~~~
+unzip -o <nombre>.zip
+~~~
+
+# Obtener nombre del host de la maquina:
+~~~
+hostname
+~~~
+(Incluye un sufijo, si es .local significa que el dominio pertenece solo a la maquina local, se puede ignorar con -s)
+
+# Obtener las dir ip de las interfaces de red:
+~~~
+hostname -I
+~~~
+
+

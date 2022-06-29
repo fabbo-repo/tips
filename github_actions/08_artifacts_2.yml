@@ -6,13 +6,11 @@ on:
 
 jobs:
   
-  build-on-ubuntu:
+  upload_artifact:
     runs-on: ubuntu-latest
-
     steps:
       - name: Step 1 - Create a temporary artifact downloads folder
         run: mkdir downloads
-      
       - name: Step 2 - Add artifacts to publish to the temp folder
         run: |
           cd downloads
@@ -20,9 +18,18 @@ jobs:
           echo 'bravo' > bravo.html
           echo 'charlie' > charlie.html
           cd ..
-
       - name: Step 3 - Use the Upload  Artifact Github Actions 
         uses: actions/upload-artifact@v2
         with:
-          name: assets-for-download
+          name: assets_for_download
           path: download
+  
+  download_artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 - Use the Download Artifact Github Actions 
+        uses: actions/download-artifact@v2
+        with:
+          name: assets_for_download
+      - name: Step 2 - List downloaded artifact
+        run: ls -l downloads
