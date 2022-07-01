@@ -1,4 +1,5 @@
-[Apoyo](https://gitexplorer.com)
+# ENLACE: [Apoyo](https://gitexplorer.com)
+
 ---------------------------------
 ### Extensión de git para VSCode:
 > Git Graph
@@ -63,12 +64,26 @@ Siendo ***id*** el identificador del commit, se puede ver con:
 ~~~
 git log --oneline
 ~~~
-  
----------------------------------
+
+### Traer los cambios de un commit especifico
+~~~
+git checkout <hash_commit>
+~~~
+Es útil para olvidar algunos commit (se le suele denominar "detach head")
+> **NOTA:** Si se hace checkout a un commit antiguo y los commit que van después no están en ninguna rama, serán eliminados por el *garbage collector*
+
 ### Ver archivos y directorios que no están en commit, y si están cometidos a seguimiento por git
 ~~~
 git status -s
 ~~~
+
+---------------------------------
+### Llevar los commits de la rama actual desde la base (commit relacionado con la otra rama) sobre otra rama:
+~~~
+git rebase <nombre_rama>
+~~~
+Es como un *merge*, la diferencia recae en que la rama actual apunta a los nuevos commits sobre la otra rama y que se recrean todos los commits desde la base
+**NOTA:** si la otra rama tiene como base la rama actual, al hacer *rebase* simplemente se actualizan los commits con los de la otra rama 
 
 ---------------------------------
 ### Añadir usuario y correo a la configuración:
@@ -87,12 +102,12 @@ git remote add origin <url>
 ---------------------------------
 ### Crear rama adicional
 ~~~
-git branch <nombre>
+git branch <nombre_rama>
 ~~~
 
 ### Cambiar el nombre de la rama
 ~~~
-git branch [-m|-M] [<viejo_nombre>] <nuevo_nombre>
+git branch [-m|-M] [<viejo_nombre_rama>] <nuevo_nombre_rama>
 ~~~
 
 ### Listar ramas
@@ -100,33 +115,60 @@ git branch [-m|-M] [<viejo_nombre>] <nuevo_nombre>
 git branch 
 ~~~
 
----------------------------------
 ### Cambiar de rama
 ~~~
-git checkout <nombre>
+git checkout <nombre_rama>
 ~~~
+o
+~~~
+git switch <nombre_rama>
+~~~
+Para este caso funcionan igual, pero sus opciones son distintas
 
 ---------------------------------
 ### Hacer merge de una rama a la que estás ubicado actualmnte
 ~~~
-git merge <nombre>
+git merge <nombre_rama>
 ~~~
 
 ---------------------------------
+### Listar tags
+~~~
+git tag
+~~~
+
 ### Crear una tag
 ~~~
-git tag <nombre> -m "desc"
+git tag <nombre_tag>
 ~~~
-***nombre*** hace referencia al nombre de la tag y ***"desc"*** hace referencia a la descripción del commit
 
----------------------------------
+### Crear una tag anotada con mensaje
+~~~
+git tag <nombre_tag> -a -m "<descripcion>"
+~~~
+***nombre_tag*** suele ser del estilo v0.1.1 por ejemplo
+
 ### Subir tag
 ~~~
 git push --tags
 ~~~
 
 ---------------------------------
-### Clonar repositorio a local
+### Traer los cambios de un repositorio remoto
+~~~
+git fetch
+~~~
+Creará una rama adicional (origin/<nombre_rama>), luego se puede hacer un merge con dicha rama
+~~~
+git merge origin/<nombre_rama>
+~~~
+O bien esos dos comandos ejecutarlos con:
+~~~
+git pull
+~~~
+
+---------------------------------
+### Clonar repositorio remoto a local
 ~~~
 git clone <url>
 ~~~
