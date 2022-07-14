@@ -118,11 +118,11 @@
   
 * Publicar una imagen en la cuenta de Docker
   ~~~
-  docker push <nombre_usuario>/<imagen>
+  docker push <docker_hub_id>/<nombre_repo>:<nombre_imagen>
   ~~~
   > ***Nota:*** Una vez publicada la imagen se puede obtener así:
   ~~~
-  docker pull <nombre_usuario>/<imagen>
+  docker pull <docker_hub_id>/<nombre_imagen>
   ~~~
   
 * Inspeccionar datos y metadatos de un contenedor
