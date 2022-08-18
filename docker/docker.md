@@ -58,6 +58,7 @@
   > ***--rm*** contenedor se elimina una vez finalice\
   > ***-d*** ejecuta el contenedor en background y mustra el id del contenedor\
   > ***-p \<puerto_host>:\<puerto_contenedor>*** vincula los puertos del contenedor a los del host\
+  > ***-v \<volumen_host>:\<volumen_contenedor>*** vincula los volumenes del contenedor a los del host\
   > ***-P*** vincula los puertos expuestos a puertos aleatorios del host\
   > ***--name \<nombre>*** da un nombre al contenedor\
   > ***--net <nombre_red>*** lanzar contenedores en una red de docker\
