@@ -143,8 +143,10 @@ Un aspecto importante de las redes en docker es que utilizan el DNS configurado 
 Los tipos de redes/drivers utilizados en docker son:
   
   * ***bridge***: Actua como un switch en la interfaz de red creada por docker (docker0), para acceder a un contenedor en esta red se debe exponer el puerto al que se desea acceder.
-  * ***macvlan***: Situa la red del contenedor dentro de la red del host. No es necesario exponer ningún puerto puesto que el contenedor se ejecuta como una aplicación más del host a efectos de red. La desventaja es que no ofrece aislamiento por lo que es menos segura. Por otra parte tiene 2 modos, el primero es el modo *bridge* el cual utiliza la interfaz de red del host y el segundo modo crea sus propias interfaces de red.
-  * ***ipvlan***: Funciona igual que *macvlan* en el caso que se pretenda dar una ip distinta a cada contenedor y soluciona el problema del *promiscuous mode*. A diferencia de *macvlan* es que asigna la misma dir MAC del host a los contenedores en vez de crear una distinta para cada uno (se debe configurar el router/switch para aceptar una misma MAC compartida por diferentes IPs).
+  * ***macvlan***: Situa la red del contenedor dentro de la red del host. No es necesario exponer ningún puerto puesto que el contenedor se ejecuta como una aplicación más del host a efectos de red. La desventaja es que no ofrece aislamiento por lo que es menos segura. Por otra parte, tiene 2 modos, el primero es el modo *bridge* el cual utiliza la interfaz de red del host y el segundo modo crea sus propias interfaces de red.
+  * ***ipvlan***: Funciona igual que *macvlan* en el caso que se pretenda dar una ip distinta a cada contenedor y soluciona el problema del *promiscuous mode*. A diferencia de *macvlan* es que asigna la misma dir MAC del host a los contenedores en vez de crear una distinta para cada uno (se debe configurar el router/switch para aceptar una misma MAC compartida por diferentes IPs). Por otra parte, tiene 2 modos (L2 y L3), el primera es útil para asignar IPs distintas a los contenedores en la red del host y el segundo utiliza el host como router por lo que solo se podra acceder al contenedor configurando las rutas manualmente (via router).
+  * ***overlay***: Útil para múltiples contenedores, se utiliza con *docker swarm*
+  * ***null***: No utiliza ninguna red en específico, su nombre de red es *none* 
 
 ### Comandos:
 
@@ -177,8 +179,15 @@ Los tipos de redes/drivers utilizados en docker son:
   > Se debe especificar la subnet (por ejemplo 10.7.4.0/24), la ip *gateway* (por ejemplo 10.7.4.1) y la interfaz de red del host (por ejemplo enp0s3), para usar el modo 2 de *macvlan* se debe especificar una interfaz de red diferente (por ejemplo enp0s3.20)\
   > Este método no es recomendable puesto que no todas las redes lo soportan, se debe habilitar el [*promiscuous mode*](https://youtu.be/bKFMS5C4CG0?t=1298). Hace uso del puerto del switch/router al que está conectado el host para toda la comunicación. 
 
-* Crear una red *ipcvlan*
+* Crear una red *ipvlan* de modo L2
   ~~~
   docker network create <nombre> -d ipvlan --subnet <subnet> --gateway <ip_gateway> -o parent=<interfaz_red_host>
   ~~~
   > Se debe especificar la subnet (por ejemplo 10.7.4.0/24), la ip *gateway* (por ejemplo 10.7.4.1) y la interfaz de red del host (por ejemplo enp0s3)
+
+* Crear una red *ipvlan* de modo L3
+  ~~~
+  docker network create <nombre> -d ipvlan --subnet <subnet> -o parent=<interfaz_red_host> -o ipvlan_mode=L3
+  ~~~
+  > Se debe especificar al menos una subnet (por ejemplo 10.7.4.0/24) y la interfaz de red del host (por ejemplo enp0s3)
+
