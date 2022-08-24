@@ -86,7 +86,7 @@
   > ***-P*** vincula los puertos expuestos a puertos aleatorios del host\
   > ***--name \<nombre>*** da un nombre al contenedor\
   > ***--network <nombre_red>*** lanzar contenedores en una red de docker\
-  > ***--ip <dir_ip>*** ip que se asigna a los contenedores, solo útil para redes de tipo *macvlan* conectadas al *gateway*\
+  > ***--ip <dir_ip>*** ip que se asigna a los contenedores, solo útil para redes de tipo *macvlan* conectadas al *gateway* y redes *ipvlan*\
   > Más opciones en [docker run](https://docs.docker.com/engine/reference/commandline/run/)
     
 * Ejecutar consola (tty) en modo interactivo en un contenedor a ejecutar
