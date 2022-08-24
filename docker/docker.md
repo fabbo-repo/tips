@@ -143,7 +143,7 @@ Un aspecto importante de las redes en docker es que utilizan el DNS configurado 
 Los tipos de redes/drivers utilizados en docker son:
   
   * ***bridge***: Actua como un switch en la interfaz de red creada por docker (docker0), para acceder a un contenedor en esta red se debe exponer el puerto al que se desea acceder.
-  * ***macvlan***: Situa la red del contenedor dentro de la red del host. No es necesario exponer ningún puerto puesto que el contenedor se ejecuta como una aplicación más del host a efectos de red. La desventaja es que no ofrece aislamiento por lo que es menos segura. 
+  * ***macvlan***: Situa la red del contenedor dentro de la red del host. No es necesario exponer ningún puerto puesto que el contenedor se ejecuta como una aplicación más del host a efectos de red. La desventaja es que no ofrece aislamiento por lo que es menos segura. Por otra parte tiene 2 modos, el primero es el modo *bridge* el cual utiliza la interfaz de red del host y el segundo modo crea sus propias interfaces de red.
 
 ### Comandos:
 
@@ -173,5 +173,5 @@ Los tipos de redes/drivers utilizados en docker son:
   ~~~
   docker network create <nombre> -d <tipo_de_red> --subnet <subnet> --gateway <ip_gateway> -o parent=<interfaz_red_host>
   ~~~
-  > Se debe especificar la subnet (por ejemplo 10.7.4.0/24), la ip *gateway* (por ejemplo 10.7.4.1) y la interfaz de red del host (por ejemplo enp0s3)\
-  > Este método no es recomendable puesto que no todas las redes lo soportan. Hace uso del puerto del switch/router al que está conectado el host para toda la comunicación. 
+  > Se debe especificar la subnet (por ejemplo 10.7.4.0/24), la ip *gateway* (por ejemplo 10.7.4.1) y la interfaz de red del host (por ejemplo enp0s3), para usar el modo 2 de *macvlan* se debe especificar una interfaz de red diferente (por ejemplo enp0s3.20)\
+  > Este método no es recomendable puesto que no todas las redes lo soportan, se debe habilitar el [*promiscuous mode*](https://youtu.be/bKFMS5C4CG0?t=1298). Hace uso del puerto del switch/router al que está conectado el host para toda la comunicación. 
