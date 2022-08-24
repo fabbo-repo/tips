@@ -172,7 +172,13 @@ Los tipos de redes/drivers utilizados en docker son:
 
 * Crear una red *macvlan* pero que se conecte directamente al *gateway* obteniendo nuevas IPs diferentes a la del host
   ~~~
-  docker network create <nombre> -d <tipo_de_red> --subnet <subnet> --gateway <ip_gateway> -o parent=<interfaz_red_host>
+  docker network create <nombre> -d macvlan --subnet <subnet> --gateway <ip_gateway> -o parent=<interfaz_red_host>
   ~~~
   > Se debe especificar la subnet (por ejemplo 10.7.4.0/24), la ip *gateway* (por ejemplo 10.7.4.1) y la interfaz de red del host (por ejemplo enp0s3), para usar el modo 2 de *macvlan* se debe especificar una interfaz de red diferente (por ejemplo enp0s3.20)\
   > Este método no es recomendable puesto que no todas las redes lo soportan, se debe habilitar el [*promiscuous mode*](https://youtu.be/bKFMS5C4CG0?t=1298). Hace uso del puerto del switch/router al que está conectado el host para toda la comunicación. 
+
+* Crear una red *ipcvlan*
+  ~~~
+  docker network create <nombre> -d ipvlan --subnet <subnet> --gateway <ip_gateway> -o parent=<interfaz_red_host>
+  ~~~
+  > Se debe especificar la subnet (por ejemplo 10.7.4.0/24), la ip *gateway* (por ejemplo 10.7.4.1) y la interfaz de red del host (por ejemplo enp0s3)
