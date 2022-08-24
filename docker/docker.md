@@ -85,7 +85,8 @@
   > ***-v \<volumen_host>:\<volumen_contenedor>*** vincula los volumenes del contenedor a los del host\
   > ***-P*** vincula los puertos expuestos a puertos aleatorios del host\
   > ***--name \<nombre>*** da un nombre al contenedor\
-  > ***--net <nombre_red>*** lanzar contenedores en una red de docker\
+  > ***--network <nombre_red>*** lanzar contenedores en una red de docker\
+  > ***--ip <dir_ip>*** ip que se asigna a los contenedores, solo útil para redes de tipo *macvlan* conectadas al *gateway*\
   > Más opciones en [docker run](https://docs.docker.com/engine/reference/commandline/run/)
     
 * Ejecutar consola (tty) en modo interactivo en un contenedor a ejecutar
@@ -137,17 +138,39 @@
 
 ## Redes:
 
+Un aspecto importante de las redes en docker es que utilizan el DNS configurado en el host (generalmente ubicado en /etc/resolv.conf). También en el DNS se incluyen dominios con los nombres de los contenedores conectados a una misma red docker.
+
+Los tipos de redes/drivers utilizados en docker son:
+  
+  * ***bridge***: Actua como un switch en la interfaz de red creada por docker (docker0), para acceder a un contenedor en esta red se debe exponer el puerto al que se desea acceder.
+  * ***macvlan***: Situa la red del contenedor dentro de la red del host. No es necesario exponer ningún puerto puesto que el contenedor se ejecuta como una aplicación más del host a efectos de red. La desventaja es que no ofrece aislamiento por lo que es menos segura. 
+
+### Comandos:
+
 * Listar redes de docker
   ~~~
   docker network ls
   ~~~
+  > La columna "drivers" hace referencia a los 7 tipos de redes de docker (también denominado network type). La red por defecto es *bridge* y cada vez que se lanza un contenedor se puede ver su interfaz de red con ```ifconfig``` o ```ip address show```, hay que tener en cuenta que también aprecera la interfaz de red de *docker* la cual actuará como switch para las interfaces *bridge* para contenedores
+
+* Listar interfaces de red de tipo *bride*:
+  ~~~
+  bridge link
+  ~~~
 
 * Inspeccionar una red de docker
   ~~~
-  docker network inspect <id_red>
+  docker network inspect <nombre_red>
   ~~~
+  > Sirve para obtener las direcciones IPs de los contenedores que utilizan dicha red
 
-* Crear una red *"bridge"* de docker (permite la comunicación entre contenedores de forma aislada)
+* Crear una red *bridge* de docker (permite la comunicación entre contenedores de forma aislada)
   ~~~
   docker network create <nombre>
   ~~~
+
+* Crear una red *macvlan* pero que se conecte directamente al *gateway* obteniendo nuevas IPs diferentes a la del host
+  ~~~
+  docker network create <nombre> -d <tipo_de_red> --subnet <subnet> --gateway <ip_gateway> -o parent=<interfaz_red_host>
+  ~~~
+  > Se debe especificar la subnet (por ejemplo 10.7.4.0/24), la ip *gateway* (por ejemplo 10.7.4.1) y la interfaz de red del host (por ejemplo enp0s3)\
