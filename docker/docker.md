@@ -144,6 +144,7 @@ Los tipos de redes/drivers utilizados en docker son:
   
   * ***bridge***: Actua como un switch en la interfaz de red creada por docker (docker0), para acceder a un contenedor en esta red se debe exponer el puerto al que se desea acceder.
   * ***macvlan***: Situa la red del contenedor dentro de la red del host. No es necesario exponer ningún puerto puesto que el contenedor se ejecuta como una aplicación más del host a efectos de red. La desventaja es que no ofrece aislamiento por lo que es menos segura. Por otra parte tiene 2 modos, el primero es el modo *bridge* el cual utiliza la interfaz de red del host y el segundo modo crea sus propias interfaces de red.
+  * ***ipvlan***: Funciona igual que *macvlan* en el caso que se pretenda dar una ip distinta a cada contenedor y soluciona el problema del *promiscuous mode*. A diferencia de *macvlan* es que asigna la misma dir MAC del host a los contenedores en vez de crear una distinta para cada uno (se debe configurar el router/switch para aceptar una misma MAC compartida por diferentes IPs).
 
 ### Comandos:
 
