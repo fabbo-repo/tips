@@ -174,3 +174,4 @@ Los tipos de redes/drivers utilizados en docker son:
   docker network create <nombre> -d <tipo_de_red> --subnet <subnet> --gateway <ip_gateway> -o parent=<interfaz_red_host>
   ~~~
   > Se debe especificar la subnet (por ejemplo 10.7.4.0/24), la ip *gateway* (por ejemplo 10.7.4.1) y la interfaz de red del host (por ejemplo enp0s3)\
+  > Este método no es recomendable puesto que no todas las redes lo soportan. Hace uso del puerto del switch/router al que está conectado el host para toda la comunicación. 
