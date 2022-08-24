@@ -20,11 +20,41 @@
 -----------------------------------------
 # Comandos útiles Docker:
 
+## Imágenes:
+
 * Listar imágenes del registro local:
   ~~~
   docker images
   ~~~
+ 
+* Obtener una imagen del registro remoto de Docker y guardarla en el sistema o registro local
+  ~~~
+  docker pull <imagen>
+  ~~~
+  > ***Nota:*** Se puede especificar la versión de la imagen: ***\<imagen>:\<version>***, por ejemplo: ***ubuntu:20.04***
   
+* Construir una imagen a partir de un Dockerfile
+  ~~~
+  docker build <path>
+  ~~~
+  > ***Nota;*** El ***path*** suele ser el directorio actual, denotado por: ***.***
+
+* Loguearse con cuenta de Docker para publicar imagenes
+  ~~~
+  docker login
+  ~~~
+ 
+* Publicar una imagen en la cuenta de Docker
+  ~~~
+  docker push <docker_hub_id>/<nombre_repo>:<nombre_imagen>
+  ~~~
+  > ***Nota:*** Una vez publicada la imagen se puede obtener así:
+  ~~~
+  docker pull <docker_hub_id>/<nombre_imagen>
+  ~~~
+   
+## Contenedores:
+
 * Listar contenedores en ejecución
   ~~~
   docker ps
@@ -38,12 +68,6 @@
   ~~~
   docker container ls
   ~~~
- 
-* Obtener una imagen del registro remoto de Docker y guardarla en el sistema o registro local
-  ~~~
-  docker pull <imagen>
-  ~~~
-  > ***Nota:*** Se puede especificar la versión de la imagen: ***\<imagen>:\<version>***, por ejemplo: ***ubuntu:20.04***
 
 * Ejecutar un contenedor basado en una imagen
   ~~~
@@ -105,32 +129,14 @@
   ~~~
   docker port <id_contenedor>
   ~~~
-  
-* Construir una imagen a partir de un Dockerfile
-  ~~~
-  docker build <path>
-  ~~~
-  > ***Nota;*** El ***path*** suele ser el directorio actual, denotado por: ***.***
 
-* Loguearse con cuenta de Docker para publicar imagenes
-  ~~~
-  docker login
-  ~~~
-  
-* Publicar una imagen en la cuenta de Docker
-  ~~~
-  docker push <docker_hub_id>/<nombre_repo>:<nombre_imagen>
-  ~~~
-  > ***Nota:*** Una vez publicada la imagen se puede obtener así:
-  ~~~
-  docker pull <docker_hub_id>/<nombre_imagen>
-  ~~~
-  
 * Inspeccionar datos y metadatos de un contenedor
   ~~~
   docker inspect <id_contenedor>
   ~~~
-  
+
+## Redes:
+
 * Listar redes de docker
   ~~~
   docker network ls
