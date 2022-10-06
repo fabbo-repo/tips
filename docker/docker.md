@@ -20,11 +20,41 @@
 -----------------------------------------
 # Comandos útiles Docker:
 
+## Imágenes:
+
 * Listar imágenes del registro local:
   ~~~
   docker images
   ~~~
+ 
+* Obtener una imagen del registro remoto de Docker y guardarla en el sistema o registro local
+  ~~~
+  docker pull <imagen>
+  ~~~
+  > ***Nota:*** Se puede especificar la versión de la imagen: ***\<imagen>:\<version>***, por ejemplo: ***ubuntu:20.04***
   
+* Construir una imagen a partir de un Dockerfile
+  ~~~
+  docker build <path>
+  ~~~
+  > ***Nota;*** El ***path*** suele ser el directorio actual, denotado por: ***.***
+
+* Loguearse con cuenta de Docker para publicar imagenes
+  ~~~
+  docker login
+  ~~~
+ 
+* Publicar una imagen en la cuenta de Docker
+  ~~~
+  docker push <docker_hub_id>/<nombre_repo>:<nombre_imagen>
+  ~~~
+  > ***Nota:*** Una vez publicada la imagen se puede obtener así:
+  ~~~
+  docker pull <docker_hub_id>/<nombre_imagen>
+  ~~~
+   
+## Contenedores:
+
 * Listar contenedores en ejecución
   ~~~
   docker ps
@@ -38,12 +68,6 @@
   ~~~
   docker container ls
   ~~~
- 
-* Obtener una imagen del registro remoto de Docker y guardarla en el sistema o registro local
-  ~~~
-  docker pull <imagen>
-  ~~~
-  > ***Nota:*** Se puede especificar la versión de la imagen: ***\<imagen>:\<version>***, por ejemplo: ***ubuntu:20.04***
 
 * Ejecutar un contenedor basado en una imagen
   ~~~
@@ -61,7 +85,8 @@
   > ***-v \<volumen_host>:\<volumen_contenedor>*** vincula los volumenes del contenedor a los del host\
   > ***-P*** vincula los puertos expuestos a puertos aleatorios del host\
   > ***--name \<nombre>*** da un nombre al contenedor\
-  > ***--net <nombre_red>*** lanzar contenedores en una red de docker\
+  > ***--network <nombre_red>*** lanzar contenedores en una red de docker\
+  > ***--ip <dir_ip>*** ip que se asigna a los contenedores, solo útil para redes de tipo *macvlan* conectadas al *gateway* y redes *ipvlan*\
   > Más opciones en [docker run](https://docs.docker.com/engine/reference/commandline/run/)
     
 * Ejecutar consola (tty) en modo interactivo en un contenedor a ejecutar
@@ -105,134 +130,64 @@
   ~~~
   docker port <id_contenedor>
   ~~~
-  
-* Construir una imagen a partir de un Dockerfile
-  ~~~
-  docker build <path>
-  ~~~
-  > ***Nota;*** El ***path*** suele ser el directorio actual, denotado por: ***.***
 
-* Loguearse con cuenta de Docker para publicar imagenes
-  ~~~
-  docker login
-  ~~~
-  
-* Publicar una imagen en la cuenta de Docker
-  ~~~
-  docker push <docker_hub_id>/<nombre_repo>:<nombre_imagen>
-  ~~~
-  > ***Nota:*** Una vez publicada la imagen se puede obtener así:
-  ~~~
-  docker pull <docker_hub_id>/<nombre_imagen>
-  ~~~
-  
 * Inspeccionar datos y metadatos de un contenedor
   ~~~
   docker inspect <id_contenedor>
   ~~~
+
+## Redes:
+
+Un aspecto importante de las redes en docker es que utilizan el DNS configurado en el host (generalmente ubicado en /etc/resolv.conf). También en el DNS se incluyen dominios con los nombres de los contenedores conectados a una misma red docker.
+
+Los tipos de redes/drivers utilizados en docker son:
   
+  * ***bridge***: Actua como un switch en la interfaz de red creada por docker (docker0), para acceder a un contenedor en esta red se debe exponer el puerto al que se desea acceder.
+  * ***macvlan***: Situa la red del contenedor dentro de la red del host. No es necesario exponer ningún puerto puesto que el contenedor se ejecuta como una aplicación más del host a efectos de red. La desventaja es que no ofrece aislamiento por lo que es menos segura. Por otra parte, tiene 2 modos, el primero es el modo *bridge* el cual utiliza la interfaz de red del host y el segundo modo crea sus propias interfaces de red.
+  * ***ipvlan***: Funciona igual que *macvlan* en el caso que se pretenda dar una ip distinta a cada contenedor y soluciona el problema del *promiscuous mode*. A diferencia de *macvlan* es que asigna la misma dir MAC del host a los contenedores en vez de crear una distinta para cada uno (se debe configurar el router/switch para aceptar una misma MAC compartida por diferentes IPs). Por otra parte, tiene 2 modos (L2 y L3), el primera es útil para asignar IPs distintas a los contenedores en la red del host y el segundo utiliza el host como router por lo que solo se podra acceder al contenedor configurando las rutas manualmente (via router).
+  * ***overlay***: Útil para múltiples contenedores, se utiliza con *docker swarm*
+  * ***null***: No utiliza ninguna red en específico, su nombre de red es *none* 
+
+### Comandos:
+
 * Listar redes de docker
   ~~~
   docker network ls
   ~~~
+  > La columna "drivers" hace referencia a los 7 tipos de redes de docker (también denominado network type). La red por defecto es *bridge* y cada vez que se lanza un contenedor se puede ver su interfaz de red con ```ifconfig``` o ```ip address show```, hay que tener en cuenta que también aprecera la interfaz de red de *docker* la cual actuará como switch para las interfaces *bridge* para contenedores
+
+* Listar interfaces de red de tipo *bride*:
+  ~~~
+  bridge link
+  ~~~
 
 * Inspeccionar una red de docker
   ~~~
-  docker network inspect <id_red>
+  docker network inspect <nombre_red>
   ~~~
+  > Sirve para obtener las direcciones IPs de los contenedores que utilizan dicha red
 
-* Crear una red *"bridge"* de docker (permite la comunicación entre contenedores de forma aislada)
+* Crear una red *bridge* de docker (permite la comunicación entre contenedores de forma aislada)
   ~~~
   docker network create <nombre>
   ~~~
 
-------------------------------------------
-# Dockerfile:
-[documentación](https://docs.docker.com/engine/reference/builder/)
-
-* Especificar la imagen base (la version es opcionak)
-  > FROM \<imagen>:\<version>
-
-* Espicificar un directorio de trabajo
-  > WORKDIR \<path>
-
-* Copiar un fichero o directorio a una ruta del contenedor, también puede usar ficheros o directorios de urls y ficheros comprimidos que seran descomprimidos en el contenedor
-  > ADD \<host_path> \<contenedor_path>
-
-* Copiar directorios y ficheros locales al contenedor (a diferencia de ADD solo sirve para copiar ficheros o directorios locales sin aplicar descompresión en ningun momento)
-  > COPY \<host_path> \<contenedor_path>
-
-* Ejecutar comandos para construir la imagen (dependencias)
-  > RUN \<comando>
-
-* Vincular un puerto
-  > EXPOSE \<puerto>
-
-* Ejecutar comando al arrancar el contenedor (solo puede haber uno en el Dockerfile)
-  > CMD ["\<comando>","\<argumento1>","\<argumento2>",...]
-
-* Añadir detalles de autor (el correo va entre dimantes: <>)
-  > MAINTAINER \<nombre> \<correo>
-  
-* Añadir metadatos (tanto el dato como el valor van entre comillas)
-  > LABEL \<dato>=\<valor>\
-  > Ejemplo: LABEL "web.nombre"="custom web"
-
-----------------------------------------
-# Docker Compose:
-
-* Instalación con python:
-  pip install docker-compose
-
-* Lanzar los contenedores de un fichero ***.yml*** en background
+* Crear una red *macvlan* pero que se conecte directamente al *gateway* obteniendo nuevas IPs diferentes a la del host
   ~~~
-  docker-compose up -d
+  docker network create <nombre> -d macvlan --subnet <subnet> --gateway <ip_gateway> -o parent=<interfaz_red_host>
   ~~~
-  ***Nota:*** Si el contenedor ya se ha lanzado se puede usar la flag **--force-recreate**
-* Destruir los contenedores:
-  ~~~
-  docker-compose down -v
-  ~~~
+  > Se debe especificar la subnet (por ejemplo 10.7.4.0/24), la ip *gateway* (por ejemplo 10.7.4.1) y la interfaz de red del host (por ejemplo enp0s3), para usar el modo 2 de *macvlan* se debe especificar una interfaz de red diferente (por ejemplo enp0s3.20)\
+  > Este método no es recomendable puesto que no todas las redes lo soportan, se debe habilitar el [*promiscuous mode*](https://youtu.be/bKFMS5C4CG0?t=1298). Hace uso del puerto del switch/router al que está conectado el host para toda la comunicación. 
 
-* Ejecutar comando en contenedor
+* Crear una red *ipvlan* de modo L2
   ~~~
-  docker-compose run <nombre_contenedor> <comando>
+  docker network create <nombre> -d ipvlan --subnet <subnet> --gateway <ip_gateway> -o parent=<interfaz_red_host>
   ~~~
-  ***Nota:*** Para acceder a la consola del contenedor, se puede usar el comando *bash*
+  > Se debe especificar la subnet (por ejemplo 10.7.4.0/24), la ip *gateway* (por ejemplo 10.7.4.1) y la interfaz de red del host (por ejemplo enp0s3)
 
-* Obtener ID:
+* Crear una red *ipvlan* de modo L3
   ~~~
-  docker-compose run app id
+  docker network create <nombre> -d ipvlan --subnet <subnet> -o parent=<interfaz_red_host> -o ipvlan_mode=L3
   ~~~
+  > Se debe especificar al menos una subnet (por ejemplo 10.7.4.0/24) y la interfaz de red del host (por ejemplo enp0s3)
 
-* Ejemplo 1 de estructura:
-  ~~~
-  version: "3"                      # Version de la aplicación docker
-  services:
-    servicio1:                      # Nombre de uno de los servicios/contenedores
-      image: <imagen>               # Nombre de la imagen del servicio 1
-      container_name: servicio1     # Nombre del contenedor
-      environment:                  # Especificar variables de entorno en el contenedor
-        - VAR1=3                    # Variable de entorno valdrá 1 al ejecutar
-        - VAR2                      # El valor de VAR2 se le asignará por consola
-      env_file:                     # Se usa para pasar un ficher con variables de entorno
-        - fichero.env               # Solo ficheros con extensión .env
-      ports:
-        - <puerto_host>:<puerto_contenedor>
-      volumes:                      # Vincula directorio del host con el servicio/contenedor
-        - <directorio_host>:<directorio_contenedor>
-      restart: <tipo_reinicio>      # En la descripción se especifica sobre <top_reinicio>
-    servicio2:
-      image: <imagen>
-      command: <comando>            # Comando a ejecutar una vez se lance el contenedor
-      depends_on:                   # Se usa para indicar los servicios que 
-        - servicio1                 # se deben ejecutar antes que este
-    servicio3:
-      build: <path>                 # Indica que el servicio3 utiliza un Dockerfile para
-                                    # crear su imagen
-  ~~~
-  > \<tipo_reinicio> puede ser:
-  > * "no" -> en ninguna circumstancia se reinicia el servidor
-  > * always -> si el contenedor se deteniene por cualquier motivo, se reinicia
-  > * on-failure -> se reinicia el contenedor si se detiene por un código de error
-  > * unless-stopped -> siempre se reinicia el contenedor a no ser que lo detengamos manualmente
