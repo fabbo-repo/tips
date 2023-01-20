@@ -5,6 +5,12 @@
 > Git Graph
 
 ---------------------------------
+### Evitar inserción de saltos de líneas en windows:
+~~~
+git config --global core.autocrlf false
+~~~
+
+---------------------------------
 ### Usar algoritmo SHA1 con git:
 ~~~
 echo "<contenido>" | git hash-object --stdin 
