@@ -10,6 +10,12 @@ kubectl get pod
 kubectl get pods -n <NAMESPACE>
 ~~~
 
+## List pods by labels
+
+~~~
+kubectl get pods -selector <LABEL_NAME>=<LABEL_VALUE>
+~~~
+
 ## List pods with full details
 
 ~~~
