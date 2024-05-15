@@ -62,3 +62,15 @@ kubectl exec -it <POD_NAME> -- bin/bash
 ~~~
 kubectl delete pod <POD_NAME>
 ~~~
+
+## Get user used to execute process inside pod
+
+~~~
+kubectl exec <POD_NAME> -- whoami
+~~~
+
+## Port forward a pod port to local host
+
+~~~
+kubectl port-forward <POD_NAME> <LOCAL_PORT>:<POD_PORT>
+~~~

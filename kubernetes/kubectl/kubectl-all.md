@@ -39,3 +39,9 @@ kubectl apply -f <FILE_NAME>
 ~~~
 kubectl delete -f <FILE_NAME>
 ~~~
+
+## Get all cluster conf and service
+
+~~~
+kubectl get all --all-namespaces -o yaml > all-deploy-services.yaml
+~~~
